@@ -1,0 +1,28 @@
+my popup store
+
+definition des besoins:
+	
+-permettre au responsable d'un point de vente de lancer et gérer son activité éphémère. L'utilisation doit être simple car c'est un magasin à court terme.
+
+-ouverture de la boutique:
+	-encodage du nom commercial
+	-définition de la liste des prix rond et d'une couleur qui leurs sont assigné pour mieux les identifier
+	-liste des articles identifié par un code de 3 lettres, un libellé et sa reference de prix
+	-encodage du stock de chaque article
+
+un mode caisse : 
+	-gestion de l'activité
+	-une vente est enregistrée avec la date, la liste des articles(+quantité), type de paiement,et le prix total.
+	-article peut être imputé via son code 3 lettres ??
+
+le vendeur peut creer qu'une seule boutique.
+Il peut recreer une nouvelle boutique
+
+application sur un poste de travail
+associé à une BDD sql serv
+
+cette base de donnée:
+-
+
+
+
