@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyPopuStore.BU
 {
-    using DAL.DBd;
+    using DAL.DB;
     class SaleServices
     {
         public static List<Sale> getAllSales() { return null; }

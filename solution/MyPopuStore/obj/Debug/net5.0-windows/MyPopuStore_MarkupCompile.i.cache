@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\
+D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\
 MyPopuStore
 none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
-D:\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\App.xaml
-11151548125
+D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\App.xaml
+6-1108924233
 
-14298183909
-220-513004122
-MainWindow.xaml;
+22-1762990619
+220-1937298373
+MainWindow.xaml;UI\MenuBar\MenuBar.xaml;UI\Pages\Manage\ManagePage.xaml;UI\Pages\Product\ProductPage.xaml;UI\Pages\Sale\SalePage.xaml;UI\Resource\Dictionary1.xaml;
 
-False
+True
 

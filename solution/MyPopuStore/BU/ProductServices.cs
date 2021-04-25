@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyPopuStore.BU
 {
-    using DAL.DBd;
+    using DAL.DB;
     class ProductServices
     {
         public static void addProduct(string code,string label, CategoryPrice catPrice, int quantityStock, string picturePath = null) { }

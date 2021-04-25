@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace MyPopuStore.DAL.DBd
+namespace MyPopuStore.DAL.DB
 {
     public partial class Product
     {

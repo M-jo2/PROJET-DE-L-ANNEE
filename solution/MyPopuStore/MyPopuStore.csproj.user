@@ -7,7 +7,36 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="UI\MenuBar\MenuBar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UI\Pages\Manage\ManagePage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UI\Pages\Product\ProductPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UI\Pages\Sale\SalePage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\MenuBar\MenuBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Pages\Manage\ManagePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Pages\Product\ProductPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Pages\Sale\SalePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Resource\Dictionary1.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1AJzjQ/0xhOH2Sxe0YgoLpIkKKlpx62dpT8wI4pI4nivmh3osJLuaw2BMPwz+o42A1TylTywpfy5bkQTokx3qw==",
+  "dgSpecHash": "K0p6+pfWjgw/ezREEAbkx8DKkn4r6gIwSD6q9G0PDNNo4LeTnf0+Kf/dk5YcxJfGrjCIhbsbSBaNJ3DiIP658w==",
   "success": true,
-  "projectFilePath": "D:\\projet Cours PGBD\\PROJET DE L ANNEE\\solution\\MyPopuStore\\MyPopuStore.csproj",
+  "projectFilePath": "D:\\Projet dev\\projet Cours PGBD\\PROJET DE L ANNEE\\solution\\MyPopuStore\\MyPopuStore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\uo\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\uo\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

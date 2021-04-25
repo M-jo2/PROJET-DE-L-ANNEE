@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 
 #nullable disable
 
-namespace MyPopuStore.DAL.DBd
+namespace MyPopuStore.DAL.DB
 {
     public partial class MyPopupStoreDBContext : DbContext
     {
@@ -20,6 +20,7 @@ namespace MyPopuStore.DAL.DBd
         }
 
         public virtual DbSet<CategoryPrice> CategoryPrices { get; set; }
+        public virtual DbSet<Info> Infos { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Sale> Sales { get; set; }
         public virtual DbSet<SaleDetail> SaleDetails { get; set; }
@@ -51,6 +52,17 @@ namespace MyPopuStore.DAL.DBd
                     .IsUnicode(false);
 
                 entity.Property(e => e.Price).HasColumnType("decimal(18, 0)");
+            });
+
+            modelBuilder.Entity<Info>(entity =>
+            {
+                entity.HasKey(e => e.PopupStoreName);
+
+                entity.ToTable("Info");
+
+                entity.Property(e => e.PopupStoreName).HasMaxLength(50);
+
+                entity.Property(e => e.CreationDate).HasColumnType("datetime");
             });
 
             modelBuilder.Entity<Product>(entity =>
