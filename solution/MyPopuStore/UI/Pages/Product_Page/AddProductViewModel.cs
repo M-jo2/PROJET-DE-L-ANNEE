@@ -10,7 +10,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyPopuStore.UI.Pages.Product
+namespace MyPopuStore.UI.Pages.Product_Page
 {
     class AddProductViewModel : INotifyPropertyChanged
     {
@@ -43,7 +43,7 @@ namespace MyPopuStore.UI.Pages.Product
             }
             set
             {
-                if(value.Length > MaxCharInCode)
+                if (value.Length > MaxCharInCode)
                 {
                     value = code.Substring(0, MaxCharInCode);
                 }
@@ -93,7 +93,7 @@ namespace MyPopuStore.UI.Pages.Product
         }
         public void createProduct()
         {
-            ProductServices.addProduct(Code,Label,CategoryPriceOfProduct,QuantityStock,PictureProduct);
+            ProductServices.addProduct(Code, Label, CategoryPriceOfProduct, QuantityStock, PictureProduct);
         }
 
         public void setCategoryPrice()

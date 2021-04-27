@@ -32,14 +32,9 @@ namespace MyPopuStore.BU
             {
                 category = db.CategoryPrices.Find(ID);
             }
-            return category;
+            return category==null ? new CategoryPrice() { Color = "#fff", Price = 0 } : category;
         }
 
-        public static CategoryPrice GetDefaultPrice()
-        {
-            CategoryPrice category = new CategoryPrice() { Color = "#fff", Price = 0 };
-            return category;
-        }
         public static List<CategoryPrice> GetAllPrice()
         {
             using (DB.MyPopupStoreDBContext db = new DB.MyPopupStoreDBContext())

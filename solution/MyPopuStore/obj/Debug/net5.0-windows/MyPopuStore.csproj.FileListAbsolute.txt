@@ -121,7 +121,6 @@ D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug
 D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\UI\Pages\CategoryPriceManagerPage\CategoryPriceManager.g.cs
 D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\UI\Pages\Manage\ManagePage.g.cs
 D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\UI\Pages\Product_Page\ProductPage.g.cs
-D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\UI\Pages\Sale\SalePage.g.cs
 D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\App.g.cs
 D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
 D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\MyPopuStore_MarkupCompile.cache
@@ -129,7 +128,6 @@ D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug
 D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\MainWindow.baml
 D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\UI\Pages\Manage\ManagePage.baml
 D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\UI\Pages\Product_Page\ProductPage.baml
-D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\UI\Pages\Sale\SalePage.baml
 D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\UI\Resource\Dictionary1.baml
 D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\MyPopuStore.g.resources
 D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\MyPopuStore.GeneratedMSBuildEditorConfig.editorconfig
@@ -142,3 +140,9 @@ D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug
 D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\MyPopuStore.pdb
 D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\MyPopuStore.genruntimeconfig.cache
 D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\MyPopuStore.csprojAssemblyReference.cache
+D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\UI\Pages\Sale_Page\NewSaleView.g.cs
+D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\UI\Pages\Sale_Page\SalePage.g.cs
+D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\UI\Pages\Sale_Page\SalesView.g.cs
+D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\UI\Pages\Sale_Page\NewSaleView.baml
+D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\UI\Pages\Sale_Page\SalePage.baml
+D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\UI\Pages\Sale_Page\SalesView.baml

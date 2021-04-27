@@ -1,6 +1,6 @@
 ﻿using MyPopuStore.UI.Pages.Manage;
-using MyPopuStore.UI.Pages.Product;
-using MyPopuStore.UI.Pages.Sale;
+using MyPopuStore.UI.Pages.Product_Page;
+using MyPopuStore.UI.Pages.Sale_Page;
 using System;
 using System.Collections.Generic;
 using System.Linq;

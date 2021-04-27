@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MyPopuStore.UI.Pages.Sale
+namespace MyPopuStore.UI.Pages.Sale_Page
 {
     /// <summary>
-    /// Logique d'interaction pour SalePage.xaml
+    /// Logique d'interaction pour NewSaleView.xaml
     /// </summary>
-    public partial class SalePage : Page
+    public partial class NewSaleView : Page
     {
-        public SalePage()
+        public NewSaleView()
         {
             InitializeComponent();
         }

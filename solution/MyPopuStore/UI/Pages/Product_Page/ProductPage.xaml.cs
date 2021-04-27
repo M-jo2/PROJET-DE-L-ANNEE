@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using MyPopuStore.UI.Pages.CategoryPriceManagerPage;
+using MyPopuStore.UI.Pages.Product_Page;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,7 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MyPopuStore.UI.Pages.Product
+namespace MyPopuStore.UI.Pages.Product_Page
 {
     /// <summary>
     /// Logique d'interaction pour ProductPage.xaml
@@ -44,6 +45,7 @@ namespace MyPopuStore.UI.Pages.Product
         private void AddProductButton(object sender, RoutedEventArgs e)
         {
             addProductViewModel.createProduct();
+            ListOfAllProducts.ItemsSource = productPageViewModel.GetAllProducts(); // a retiré
         }
 
         private void UICatPrice_Click(object sender, RoutedEventArgs e)

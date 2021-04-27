@@ -10,14 +10,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace MyPopuStore.UI.Pages.Product
+namespace MyPopuStore.UI.Pages.Product_Page
 {
     class ProductPageViewModel : INotifyPropertyChanged
     {
-
-        public List<DAL.DB.Product> GetAllProducts()
+        public List<ProductUI> GetAllProducts()
         {
-            return ProductServices.getAllProduct();
+            List<ProductUI> productsUI = new();
+            List<DAL.DB.Product> products = ProductServices.getAllProduct();
+
+            foreach (DAL.DB.Product product in products)
+            {
+                int CatId = product.CategoryPriceId != null ? (int)product.CategoryPriceId : 0;
+
+                productsUI.Add(new ProductUI
+                {
+                    Product = product,
+                    CategoryPrice = CategoryPriceServices.GetPrice(CatId)
+                });
+            }
+
+            return productsUI;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

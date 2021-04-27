@@ -76,18 +76,16 @@ namespace MyPopuStore.UI.Resource
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             CategoryPrice result;
-            if (value != null)
-                result = CategoryPriceServices.GetPrice((int)value);
-            else result = CategoryPriceServices.GetDefaultPrice();
+            result = CategoryPriceServices.GetPrice(value != null ?(int)value : -1);
 
             return result;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            int ID;
+            int? ID;
             if (value != null) ID = ((CategoryPrice)value).CategoryPriceId;
-            else ID = 0;
+            else ID = null;
             return ID;
         }
     }
