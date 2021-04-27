@@ -9,11 +9,5 @@ namespace MyPopuStore.DAL.DB
     {
         public string PopupStoreName { get; set; }
         public DateTime CreationDate { get; set; }
-
-        public Info(string popupStoreName, DateTime creationDate)
-        {
-            PopupStoreName = popupStoreName;
-            CreationDate = creationDate;
-        }
     }
 }

@@ -35,7 +35,7 @@
                     Content="Créer ce Popup Store"
                     FontSize="10"
                     Click="CreatePopupStoreButton"
-                    Style="{StaticResource buttonMenuBarStyle}"/>
+                    Style="{StaticResource buttonPositiveAction}"/>
 
                 
             </StackPanel>

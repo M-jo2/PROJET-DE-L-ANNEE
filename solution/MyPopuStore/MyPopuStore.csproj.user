@@ -7,13 +7,13 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="UI\MenuBar\MenuBar.xaml.cs">
+    <Compile Update="UI\Pages\CategoryPriceManagerPage\CategoryPriceManager.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="UI\Pages\Manage\ManagePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UI\Pages\Product\ProductPage.xaml.cs">
+    <Compile Update="UI\Pages\Product_Page\ProductPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="UI\Pages\Sale\SalePage.xaml.cs">
@@ -24,13 +24,13 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UI\MenuBar\MenuBar.xaml">
+    <Page Update="UI\Pages\CategoryPriceManagerPage\CategoryPriceManager.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UI\Pages\Manage\ManagePage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UI\Pages\Product\ProductPage.xaml">
+    <Page Update="UI\Pages\Product_Page\ProductPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UI\Pages\Sale\SalePage.xaml">

@@ -12,7 +12,7 @@ namespace MyPopuStore.BU
 
         public void createPopupStoreInfo(string popupStoreName)
         {
-            Info info = new Info(popupStoreName, DateTime.Now.Date);
+            Info info = new Info() { PopupStoreName =popupStoreName, CreationDate= DateTime.Now.Date };
             using (DAL.DB.MyPopupStoreDBContext db = new DAL.DB.MyPopupStoreDBContext())
             {
                 

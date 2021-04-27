@@ -42,9 +42,7 @@ namespace MyPopuStore.DAL.DB
             {
                 entity.ToTable("CategoryPrice");
 
-                entity.Property(e => e.CategoryPriceId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("CategoryPriceID");
+                entity.Property(e => e.CategoryPriceId).HasColumnName("CategoryPriceID");
 
                 entity.Property(e => e.Color)
                     .IsRequired()
@@ -94,9 +92,7 @@ namespace MyPopuStore.DAL.DB
             {
                 entity.ToTable("Sale");
 
-                entity.Property(e => e.SaleId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("SaleID");
+                entity.Property(e => e.SaleId).HasColumnName("SaleID");
 
                 entity.Property(e => e.Date).HasColumnType("datetime");
             });
@@ -105,9 +101,7 @@ namespace MyPopuStore.DAL.DB
             {
                 entity.HasKey(e => e.SaleDetailsId);
 
-                entity.Property(e => e.SaleDetailsId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("SaleDetailsID");
+                entity.Property(e => e.SaleDetailsId).HasColumnName("SaleDetailsID");
 
                 entity.Property(e => e.NbProduct).HasColumnName("nbProduct");
 
