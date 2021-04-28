@@ -21,6 +21,7 @@ namespace MyPopuStore.UI.Pages.Sale_Page
     public partial class SalesView : Page
     {
         private SaleListViewModel saleListViewModel;
+        private SaleDetailViewModel saleDetailViewModel;
         public SalesView()
         {
             InitializeComponent();
@@ -29,6 +30,7 @@ namespace MyPopuStore.UI.Pages.Sale_Page
 
         private void PopulateAndBind()
         {
+            saleDetailViewModel = new();
             saleListViewModel = new();
             ListSale.ItemsSource = saleListViewModel.SaleUIs;
         }
@@ -40,7 +42,8 @@ namespace MyPopuStore.UI.Pages.Sale_Page
 
         private void ASaleClick(object sender, RoutedEventArgs e)
         {
-            textTest.Text = "waw";
+            int saleId = ((sender as Button).DataContext as SaleUI).Sale.SaleId;
+            ListSaleDetails.ItemsSource = saleDetailViewModel.GetSaleDetailUIs(saleId);
         }
     }
 }

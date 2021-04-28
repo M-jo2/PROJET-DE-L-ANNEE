@@ -33,7 +33,13 @@ namespace MyPopuStore.BU
         public static void setPictureOfProduct(string code, string picturePath) { }
         public static void setStockProduct(string code, int nbProducts) { }
         public static void substractStockProduct(string code, int nbProducts) { }
-        public static Product getProduct(string code) { return null; }
+        public static Product getProduct(string code)
+        {
+            using (MyPopupStoreDBContext db = new MyPopupStoreDBContext())
+            {
+                return db.Products.Find(code);
+            }
+        }
         public static List<Product> getAllProduct() 
         {
             using (MyPopupStoreDBContext db = new MyPopupStoreDBContext())

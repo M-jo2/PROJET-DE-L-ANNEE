@@ -43,7 +43,6 @@ namespace MyPopuStore.BU
             using (MyPopupStoreDBContext db = new())
             {
                 List<SaleDetail> saleDetails = db.SaleDetails.Where(e => e.SaleId == SaleID).ToList();
-
                 return saleDetails;
             }
         }

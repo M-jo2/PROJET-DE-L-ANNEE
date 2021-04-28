@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MyPopuStore.BU;
+using MyPopuStore.DAL.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,24 +10,22 @@ namespace MyPopuStore.UI.Pages.Sale_Page
 {
     class SaleDetailViewModel
     {
-        public List<SaleUI> SaleDetailUIs
+        public List<SaleDetailUI> GetSaleDetailUIs(int SaleId)
         {
-            get
-            {
-                List<SaleDetailUI> saleDetailUIs = new();
-                List<Sale> sales = SaleServices.getAllSales();
+            
+            List<SaleDetailUI> saleDetailUIs = new();
+            List<SaleDetail> saleDetails = SaleServices.getSaleDetailsOneSale(SaleId);
 
-                foreach (Sale sale in sales)
+            foreach (SaleDetail saleDetail in saleDetails)
+            {
+                saleDetailUIs.Add(new()
                 {
-                    saleUIs.Add(new()
-                    {
-                        Sale = sale,
-                        QuantityOfProduct = SaleServices.getNumberProductOneSale(sale.SaleId),
-                        Total = SaleServices.getTotalOneSale(sale.SaleId)
-                    });
-                }
-                return saleUIs;
+                    Product = ProductServices.getProduct(saleDetail.ProductCode),
+                    SaleDetail = saleDetail
+                }) ;
             }
+            return saleDetailUIs;
+            
         }
     }
 }

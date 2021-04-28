@@ -99,22 +99,21 @@
 
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Button Margin="2" Height="20" HorizontalContentAlignment="Stretch" Background="Transparent">
-                                        <Grid >
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="auto"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="20"/>
-                                            </Grid.ColumnDefinitions>
-                                            <Rectangle Grid.Column="0" Fill="#bef" />
-                                            <Rectangle Grid.Column="2" Fill="#bef" />
-                                            <TextBlock Grid.Column="0" HorizontalAlignment="Left" Padding="0" Text="{Binding Sale.Date}"/>
-                                            <TextBlock Grid.Column="1" HorizontalAlignment="Center" Padding="0" Text="{Binding Total}"/>
-                                            <TextBlock Grid.Column="2" HorizontalAlignment="Center" Padding="0" Text="{Binding QuantityOfProduct}"/>
-                                            <Image Grid.Column="3" HorizontalAlignment="Right" Source="{Binding Sale.PaymentType,Converter={StaticResource PaymentTypeToLogoConverter}}"/>
-                                        </Grid>
-                                    </Button>
+                                    <Grid Height="70" MinWidth="150" Background="#aff" Margin="3">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="50"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Grid.Column="0" Margin="5"  Source="{Binding Product.Picture}"/>
+                                        <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{Binding Product.Code}"/>
+                                        <TextBlock Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Product.Label}"/>
+                                        <TextBlock Grid.Column="3" VerticalAlignment="Center" Text="{Binding SaleDetail.Price,Converter={StaticResource DecimalToStringConverter}}"/>
+                                        <TextBlock Grid.Column="4" VerticalAlignment="Center" Text="{Binding SaleDetail.NbProduct,Converter={StaticResource IntToStringConverter}}"/>
+                                        
+                                    </Grid>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
