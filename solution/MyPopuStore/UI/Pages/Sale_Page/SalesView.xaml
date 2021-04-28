@@ -27,7 +27,8 @@
 
             <GroupBox Grid.Column="0" 
                       Padding="10"
-                      Style="{StaticResource GroupBoxStyle1}">
+                      Style="{StaticResource GroupBoxStyle1}"
+                      x:Name="LeftView">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -35,7 +36,7 @@
                     </Grid.RowDefinitions>
 
                     <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
-                        <ItemsControl x:Name="ListSale" >
+                        <ItemsControl x:Name="ListSale" ItemsSource="{Binding ListAllSale}">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <StackPanel/>
@@ -81,16 +82,49 @@
             
             <GroupBox Grid.Column="1" 
                       Padding="10"
-                      Style="{StaticResource GroupBoxStyle1}">
+                      Style="{StaticResource GroupBoxStyle1}"
+                      x:Name="RightView">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height=" *"/>
 
                     </Grid.RowDefinitions>
-                    <TextBlock x:Name="textTest"/>
+
+                    <GroupBox Grid.Row="0" Style="{StaticResource GroupBoxStyle1}" Height="{Binding NewSaleInputHeight}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="40"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" FontSize="13" FontWeight="Bold" Text="Nouvelle vente"/>
+                            <StackPanel Grid.Row="1" Grid.Column="0">
+                                <TextBlock Text="Code produit" HorizontalAlignment="Center"/>
+                                <TextBox Text="{Binding NewSaleDetailCode}" Width="50"/>
+                            </StackPanel >
+                            <StackPanel Grid.Row="1" Grid.Column="1" >
+                                <TextBlock Text="Quantité" HorizontalAlignment="Center"/>
+                                <TextBox Text="{Binding NewSaleDetailQuantity, Converter={StaticResource IntToStringConverter}}" Width="50"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Grid.Column="2">
+                                <TextBlock Text="Prix/unité" HorizontalAlignment="Center"/>
+                                <TextBox Text="{Binding NewSaleDetailPrice , Converter={StaticResource DecimalToStringConverter}}" Width="50"/>
+                            </StackPanel>
+                            <Button Grid.Row="1" Grid.Column="4" Style="{StaticResource buttonPositiveAction}" Content="Ajout" Click="AddProductToSale"/>
+                            <CheckBox Grid.Row="0" Grid.Column="4"  IsChecked="{Binding PaymentType}"/>
+                        </Grid>
+                        
+                        
+                    </GroupBox>
+                    
                     <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-                        <ItemsControl  x:Name="ListSaleDetails">
+                        <ItemsControl  ItemsSource="{Binding ListSaleDetails}">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <StackPanel/>

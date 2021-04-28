@@ -22,6 +22,8 @@ namespace MyPopuStore.UI.Pages.Sale_Page
     {
         private SaleListViewModel saleListViewModel;
         private SaleDetailViewModel saleDetailViewModel;
+        private NewSaleViewModel newSaleViewModel;
+
         public SalesView()
         {
             InitializeComponent();
@@ -32,18 +34,38 @@ namespace MyPopuStore.UI.Pages.Sale_Page
         {
             saleDetailViewModel = new();
             saleListViewModel = new();
-            ListSale.ItemsSource = saleListViewModel.SaleUIs;
+            newSaleViewModel = new();
+
+            RightView.DataContext = newSaleViewModel;
+            LeftView.DataContext = saleListViewModel;
         }
 
         private void NewSale_Click(object sender, RoutedEventArgs e)
         {
-
+            if (RightView.DataContext == newSaleViewModel)
+            {
+                newSaleViewModel.SaveSale();
+                saleListViewModel.LoadListSale();
+            }
+            else 
+            { 
+                RightView.DataContext = newSaleViewModel;
+            }
         }
 
         private void ASaleClick(object sender, RoutedEventArgs e)
         {
+            if (RightView.DataContext != saleDetailViewModel)
+            {
+                RightView.DataContext = saleDetailViewModel;
+            }
             int saleId = ((sender as Button).DataContext as SaleUI).Sale.SaleId;
-            ListSaleDetails.ItemsSource = saleDetailViewModel.GetSaleDetailUIs(saleId);
+            saleDetailViewModel.SetSaleDetailUIs(saleId);
+        }
+
+        private void AddProductToSale(object sender, RoutedEventArgs e)
+        {
+            newSaleViewModel.AddProductToSale();
         }
     }
 }

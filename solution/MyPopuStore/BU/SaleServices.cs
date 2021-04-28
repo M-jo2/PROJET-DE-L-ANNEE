@@ -46,5 +46,22 @@ namespace MyPopuStore.BU
                 return saleDetails;
             }
         }
+
+        public static void NewSale(List<SaleDetail> saleDetails,bool paymentType)
+        {
+            using(MyPopupStoreDBContext db = new())
+            {
+                
+                Sale sale = new()
+                {
+                    PaymentType = paymentType,
+                    Date = DateTime.Now
+                };
+                sale.SaleDetails = saleDetails;
+
+                db.Sales.Add(sale);
+                db.SaveChanges();
+            }
+        }
     }
 }
