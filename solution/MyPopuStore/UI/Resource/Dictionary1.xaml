@@ -5,7 +5,7 @@
     <local:HexaToSolidColorBrushConverter x:Key="HexaToSolidColorBrushConverter" />
     <local:DecimalToStringConverter x:Key="DecimalToStringConverter" />
     <local:IntToStringConverter x:Key="IntToStringConverter" />
-    <local:CategoryPriceToIDConverter x:Key="CategoryPriceToIDConverter" />
+    <local:PaymentTypeToLogoConverter x:Key="PaymentTypeToLogoConverter" />
 
     <Style TargetType="Button" x:Key="buttonCircle">
         <Style.Setters>

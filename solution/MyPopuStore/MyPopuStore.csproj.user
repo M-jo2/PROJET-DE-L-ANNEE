@@ -51,5 +51,8 @@
     <Page Update="UI\Resource\Dictionary1.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="UI\Resource\DictionarySales.xaml">
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 </Project>

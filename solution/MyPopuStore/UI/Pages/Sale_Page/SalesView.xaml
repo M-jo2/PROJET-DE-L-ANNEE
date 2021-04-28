@@ -10,9 +10,9 @@
 
     <Page.Resources>
         <ResourceDictionary>
-
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/UI/Resource/Dictionary1.xaml"/>
+                <ResourceDictionary Source="/UI/Resource/DictionarySales.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 
@@ -28,43 +28,98 @@
             <GroupBox Grid.Column="0" 
                       Padding="10"
                       Style="{StaticResource GroupBoxStyle1}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
 
-                <ScrollViewer>
-                    <ItemsControl x:Name="GridSale">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
+                    <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+                        <ItemsControl x:Name="ListSale" >
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            
+                            <ItemsControl.ItemTemplate>
+                                
+                                <DataTemplate>
+                                    <Button Margin="2" 
+                                        Height="20" 
+                                        HorizontalContentAlignment="Stretch" 
+                                        Background="Transparent"
+                                        Click="ASaleClick">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="20"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Rectangle Grid.Column="0" Fill="#bef" />
+                                            <Rectangle Grid.Column="2" Fill="#bef" />
+                                            <TextBlock Grid.Column="0" HorizontalAlignment="Left" Padding="0" Text="{Binding Sale.Date}"/>
+                                            <TextBlock Grid.Column="1" HorizontalAlignment="Center" Padding="0" Text="{Binding Total}"/>
+                                            <TextBlock Grid.Column="2" HorizontalAlignment="Center" Padding="0" Text="{Binding QuantityOfProduct}"/>
+                                            <Image Grid.Column="3" HorizontalAlignment="Right" Source="{Binding Sale.PaymentType,Converter={StaticResource PaymentTypeToLogoConverter}}"/>
+                                        </Grid>
+                                    </Button>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
                         
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Content="{Binding Sale.Date}"/>
-                                    <Label Grid.Column="1" Content="{Binding Total}"/>
-                                    <Label Grid.Column="2" Content="{Binding QuantityOfProduct}"/>
-                                    <Image Grid.Column="3" Source="{Binding Sale.PaymentType}"/>
-                                </Grid>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </ScrollViewer>
-                
-                
+                    </ScrollViewer>
 
+                    <Button Grid.Row="1" Style="{StaticResource buttonPositiveAction}" Content="Nouvelle vente" Click="NewSale_Click"/>
+
+                </Grid>
 
             </GroupBox>
 
+            
+            
             <GroupBox Grid.Column="1" 
                       Padding="10"
                       Style="{StaticResource GroupBoxStyle1}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height=" *"/>
 
+                    </Grid.RowDefinitions>
+                    <TextBlock x:Name="textTest"/>
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                        <ItemsControl  x:Name="ListSaleDetails">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Margin="2" Height="20" HorizontalContentAlignment="Stretch" Background="Transparent">
+                                        <Grid >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="20"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Rectangle Grid.Column="0" Fill="#bef" />
+                                            <Rectangle Grid.Column="2" Fill="#bef" />
+                                            <TextBlock Grid.Column="0" HorizontalAlignment="Left" Padding="0" Text="{Binding Sale.Date}"/>
+                                            <TextBlock Grid.Column="1" HorizontalAlignment="Center" Padding="0" Text="{Binding Total}"/>
+                                            <TextBlock Grid.Column="2" HorizontalAlignment="Center" Padding="0" Text="{Binding QuantityOfProduct}"/>
+                                            <Image Grid.Column="3" HorizontalAlignment="Right" Source="{Binding Sale.PaymentType,Converter={StaticResource PaymentTypeToLogoConverter}}"/>
+                                        </Grid>
+                                    </Button>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Grid>
             </GroupBox>
         </Grid>
     </Grid>

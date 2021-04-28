@@ -38,6 +38,14 @@ namespace MyPopuStore.BU
                 return (decimal)total;
             }
         }
-        public static List<Product> getProductsOneSale(int SaleID) { return null; }
+        public static List<SaleDetail> getSaleDetailsOneSale(int SaleID)
+        {
+            using (MyPopupStoreDBContext db = new())
+            {
+                List<SaleDetail> saleDetails = db.SaleDetails.Where(e => e.SaleId == SaleID).ToList();
+
+                return saleDetails;
+            }
+        }
     }
 }

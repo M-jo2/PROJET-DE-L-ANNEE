@@ -30,7 +30,17 @@ namespace MyPopuStore.UI.Pages.Sale_Page
         private void PopulateAndBind()
         {
             saleListViewModel = new();
-            GridSale.ItemsSource = saleListViewModel.GetAllSaleUI();
+            ListSale.ItemsSource = saleListViewModel.SaleUIs;
+        }
+
+        private void NewSale_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ASaleClick(object sender, RoutedEventArgs e)
+        {
+            textTest.Text = "waw";
         }
     }
 }

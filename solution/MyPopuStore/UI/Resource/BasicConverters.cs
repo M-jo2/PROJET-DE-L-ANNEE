@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Media;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MyPopuStore.UI.Resource
 {
@@ -71,22 +72,25 @@ namespace MyPopuStore.UI.Resource
         }
     }
 
-    public class CategoryPriceToIDConverter : IValueConverter
+    public class PaymentTypeToLogoConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            CategoryPrice result;
-            result = CategoryPriceServices.GetPrice(value != null ?(int)value : -1);
-
-            return result;
+            string picture;
+            if ((bool)value)
+            {
+                picture = @"D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\Pictures\Logo\logo_payment_type_card.png";
+            }
+            else
+            {
+                picture = @"D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\Pictures\Logo\logo_payment_type_money.png";
+            }
+            return picture;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            int? ID;
-            if (value != null) ID = ((CategoryPrice)value).CategoryPriceId;
-            else ID = null;
-            return ID;
+            throw new NotImplementedException();
         }
     }
 }
