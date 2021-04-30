@@ -1,4 +1,5 @@
-﻿using MyPopuStore.UI.Pages.Manage;
+﻿using MyPopuStore.BU;
+using MyPopuStore.UI.Pages.Manage;
 using MyPopuStore.UI.Pages.Product_Page;
 using MyPopuStore.UI.Pages.Sale_Page;
 using System;
@@ -23,30 +24,46 @@ namespace MyPopuStore
     /// </summary>
     public partial class MainWindow : Window
     {
+        ProductPage productPage;
+        ManagePage managePage;
+        SalesPage salesPage;
         public MainWindow()
         {
-                InitializeComponent();
-                ZoneContent.Content = new ManagePage();
+            InitializeComponent();
+            productPage = new();
+            managePage = new();
+            salesPage = new();
+
+            ZoneContent.Content = managePage;
         }
 
         private void MenuBar_ProductButton_Click(object sender, RoutedEventArgs e)
         {
-            ZoneContent.Content = new ProductPage();
+            if (InfoServices.popupStoreInfoExist())
+                ZoneContent.Content = productPage;
+            else AlertShopNotCreated();
         }
 
         private void MenuBar_CashRegisterButton_Click(object sender, RoutedEventArgs e)
         {
-            ZoneContent.Content = new SalesPage();
+            if (InfoServices.popupStoreInfoExist())
+                ZoneContent.Content = salesPage;
+            else AlertShopNotCreated();
         }
 
         private void MenuBar_ManageButton_Click(object sender, RoutedEventArgs e)
         {
-            ZoneContent.Content = new ManagePage();
+            ZoneContent.Content = managePage;
         }
 
         private void MenuBar_ExitButton_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
+        }
+
+        private void AlertShopNotCreated()
+        {
+            MessageBox.Show("L'accès aux produit et à la caisse  est inaccessible tant qu'un PopupStore n'est pas initialisé.");
         }
 
         

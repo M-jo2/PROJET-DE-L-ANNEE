@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <None Remove="Pictures\Logo\logo_delete.png" />
+    <None Remove="Pictures\Logo\logo_payment_type_card.png" />
+    <None Remove="Pictures\Logo\logo_payment_type_money.png" />
   </ItemGroup>
 	
 	<ItemGroup>
@@ -24,6 +26,8 @@
 	
 	<ItemGroup>
 	  <Resource Include="Pictures\Logo\logo_delete.png" />
+	  <Resource Include="Pictures\Logo\logo_payment_type_card.png" />
+	  <Resource Include="Pictures\Logo\logo_payment_type_money.png" />
 	</ItemGroup>
 
   <ItemGroup>

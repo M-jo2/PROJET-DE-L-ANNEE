@@ -79,11 +79,11 @@ namespace MyPopuStore.UI.Resource
             string picture;
             if ((bool)value)
             {
-                picture = @"D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\Pictures\Logo\logo_payment_type_card.png";
+                picture = @"\Pictures\Logo\logo_payment_type_card.png";
             }
             else
             {
-                picture = @"D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\Pictures\Logo\logo_payment_type_money.png";
+                picture = @"\Pictures\Logo\logo_payment_type_money.png";
             }
             return picture;
         }

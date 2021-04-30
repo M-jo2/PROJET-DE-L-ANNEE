@@ -82,10 +82,9 @@ namespace MyPopuStore.UI.Pages.Manage
 
         private void refreshInfo()
         {
-            InfoServices infoServices = new InfoServices();
-            if (infoServices.popupStoreInfoExist())
+            if (InfoServices.popupStoreInfoExist())
             {
-                Info info = infoServices.getPopupStoreInfo();
+                Info info = InfoServices.getPopupStoreInfo();
                 ExistShopVisibility = "Visible";
                 CreationDate = info.CreationDate.ToString();
                 NamePopupStore = info.PopupStoreName;
@@ -101,8 +100,7 @@ namespace MyPopuStore.UI.Pages.Manage
         {
             try
             {
-                InfoServices infoServices = new InfoServices();
-                infoServices.createPopupStoreInfo(popupStoreName);
+                InfoServices.createPopupStoreInfo(popupStoreName);
                 refreshInfo();
             }catch(Exception e)
             {
@@ -113,8 +111,7 @@ namespace MyPopuStore.UI.Pages.Manage
 
         public void deleteInfoPopupStore()
         {
-            InfoServices infoServices = new InfoServices();
-            infoServices.deletePopupStoreInfo();
+            InfoServices.deletePopupStoreInfo();
             refreshInfo();
         }
     }
