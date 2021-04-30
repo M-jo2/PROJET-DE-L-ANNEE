@@ -7,11 +7,14 @@ using System.Threading.Tasks;
 namespace MyPopuStore.BU
 {
     using DAL.DB;
+    using Microsoft.EntityFrameworkCore;
+
     class ProductServices
     {
-        public static void addProduct(string code,string label, CategoryPrice catPrice, int quantityStock, string picturePath = null) 
+        public static void AddProduct(string code,string label, CategoryPrice catPrice, int quantityStock, string picturePath = null) 
         {
-            Product product = new Product()
+
+            Product product = new()
             {
                 QuantityStock = quantityStock,
                 Code = code,
@@ -19,28 +22,57 @@ namespace MyPopuStore.BU
                 CategoryPriceId = catPrice.CategoryPriceId,
                 Picture = picturePath
             };
+            
 
-            using(MyPopupStoreDBContext db = new MyPopupStoreDBContext())
+            using(MyPopupStoreDBContext db = new())
             {
-                db.Add(product);
-                db.SaveChanges();
+                try
+                {
+                    db.Add(product);
+                    db.SaveChanges();
+                }
+                catch(Exception e)
+                {
+                    throw new Exception("Produit invalide", e);
+                }
+                
+            }
+        }
+        public static bool ProductIsUsed(string code)
+        {
+            using (MyPopupStoreDBContext db = new())
+            {
+                return db.SaleDetails.Where(e => e.ProductCode == code).Any();
             }
         }
 
+        public static void RemoveProduct(string code)
+        {
+            using (MyPopupStoreDBContext db = new())
+            {
+                if(ProductServices.ProductIsUsed(code))
+                    throw new Exception("Impossible de supprimer un produit enregistré dans au moins une vente.");
 
-        public static void removeProduct(string code) { }
-        public static void setCategoryPriceOfProduct(string code, CategoryPrice catPrice) { }
-        public static void setPictureOfProduct(string code, string picturePath) { }
-        public static void setStockProduct(string code, int nbProducts) { }
-        public static void substractStockProduct(string code, int nbProducts) { }
-        public static Product getProduct(string code)
+                db.Products.Remove(GetProduct(code));
+                db.SaveChanges();
+            }
+        }
+        public static void UpdateProduct(Product product)
+        {
+            using (MyPopupStoreDBContext db = new())
+            {
+                db.Products.Update(product);
+                db.SaveChanges();
+            }
+        }
+        public static Product GetProduct(string code)
         {
             using (MyPopupStoreDBContext db = new MyPopupStoreDBContext())
             {
                 return db.Products.Find(code);
             }
         }
-        public static List<Product> getAllProduct() 
+        public static List<Product> GetAllProduct() 
         {
             using (MyPopupStoreDBContext db = new MyPopupStoreDBContext())
             {

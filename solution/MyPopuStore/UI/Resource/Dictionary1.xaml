@@ -6,7 +6,6 @@
     <local:DecimalToStringConverter x:Key="DecimalToStringConverter" />
     <local:IntToStringConverter x:Key="IntToStringConverter" />
     <local:PaymentTypeToLogoConverter x:Key="PaymentTypeToLogoConverter" />
-
     <Style TargetType="Button" x:Key="buttonCircle">
         <Style.Setters>
             <Setter Property="Template">
@@ -60,4 +59,8 @@
         <Setter Property="Width" Value="40"/>
     </Style>
 
+    <Style TargetType="TextBox" x:Key="CodeEntry" >
+        <Setter Property="MaxLength" Value="3"/>
+        <Setter Property="CharacterCasing" Value="Upper"/>
+    </Style>
 </ResourceDictionary>

@@ -5,4 +5,18 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/UI/Resource/Dictionary1.xaml"/>
     </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="Button" x:Key="ButtonDelete">
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <WrapPanel>
+                            <Image Source="/Pictures/Logo/logo_delete.png" />
+                        </WrapPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+    </Style>
 </ResourceDictionary>

@@ -36,7 +36,7 @@ namespace MyPopuStore
 
         private void MenuBar_CashRegisterButton_Click(object sender, RoutedEventArgs e)
         {
-            ZoneContent.Content = new SalePage();
+            ZoneContent.Content = new SalesPage();
         }
 
         private void MenuBar_ManageButton_Click(object sender, RoutedEventArgs e)

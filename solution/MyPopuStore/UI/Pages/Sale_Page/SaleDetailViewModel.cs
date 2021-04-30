@@ -36,7 +36,7 @@ namespace MyPopuStore.UI.Pages.Sale_Page
             {
                 saleDetailUIs.Add(new()
                 {
-                    Product = ProductServices.getProduct(saleDetail.ProductCode),
+                    Product = ProductServices.GetProduct(saleDetail.ProductCode),
                     SaleDetail = saleDetail
                 }) ;
             }

@@ -18,13 +18,13 @@ namespace MyPopuStore.UI.Pages.Sale_Page
     /// <summary>
     /// Logique d'interaction pour SalesView.xaml
     /// </summary>
-    public partial class SalesView : Page
+    public partial class SalesPage : Page
     {
         private SaleListViewModel saleListViewModel;
         private SaleDetailViewModel saleDetailViewModel;
         private NewSaleViewModel newSaleViewModel;
 
-        public SalesView()
+        public SalesPage()
         {
             InitializeComponent();
             PopulateAndBind();
@@ -47,8 +47,8 @@ namespace MyPopuStore.UI.Pages.Sale_Page
                 newSaleViewModel.SaveSale();
                 saleListViewModel.LoadListSale();
             }
-            else 
-            { 
+            else
+            {
                 RightView.DataContext = newSaleViewModel;
             }
         }

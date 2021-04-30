@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using MyPopuStore.DAL.DB;
 using MyPopuStore.UI.Pages.CategoryPriceManagerPage;
 using MyPopuStore.UI.Pages.Product_Page;
 using System;
@@ -39,23 +40,39 @@ namespace MyPopuStore.UI.Pages.Product_Page
 
             AddProductPart.DataContext = addProductViewModel;
             ListProductPart.DataContext = productPageViewModel;
-            ListOfAllProducts.ItemsSource = productPageViewModel.GetAllProducts();
         }
 
         private void AddProductButton(object sender, RoutedEventArgs e)
         {
-            addProductViewModel.createProduct();
-            ListOfAllProducts.ItemsSource = productPageViewModel.GetAllProducts(); // a retiré
+            addProductViewModel.CreateProduct();
+            productPageViewModel.RefreshProductList();
         }
 
-        private void UICatPrice_Click(object sender, RoutedEventArgs e)
+        private void CatPrice_Click(object sender, RoutedEventArgs e)
         {
-            addProductViewModel.setCategoryPrice();
+            addProductViewModel.SetCategoriesPrices();
         }
 
-        private void UISearchPicture_Click(object sender, RoutedEventArgs e)
+        private void SearchPicture_Click(object sender, RoutedEventArgs e)
         {
             addProductViewModel.SetPictureProduct();
+        }
+
+        private void SetPicture_Click(object sender, RoutedEventArgs e)
+        {
+            ProductUI product = (ProductUI)((Button)sender).DataContext;
+            productPageViewModel.SetPictureProduct(product);
+        }
+
+        private void SetCatPrice_Click(object sender, RoutedEventArgs e)
+        {
+            ProductUI product = (((sender as Button).Parent as Grid).DataContext as ProductUI) ;
+            productPageViewModel.SetCategoriesPrice(product);
+        }
+
+        private void DeleteProduct_Click(object sender, RoutedEventArgs e)
+        {
+            productPageViewModel.DeleteProduct(((ProductUI)((Button)sender).DataContext).Product.Code);
         }
     }
 }

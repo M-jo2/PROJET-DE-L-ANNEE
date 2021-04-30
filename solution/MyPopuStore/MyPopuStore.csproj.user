@@ -16,13 +16,7 @@
     <Compile Update="UI\Pages\Product_Page\ProductPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UI\Pages\Sale_Page\NewSaleView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="UI\Pages\Sale_Page\SalePage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="UI\Pages\Sale_Page\SalesView.xaml.cs">
+    <Compile Update="UI\Pages\Sale_Page\SalesPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -39,13 +33,7 @@
     <Page Update="UI\Pages\Product_Page\ProductPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UI\Pages\Sale_Page\NewSaleView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="UI\Pages\Sale_Page\SalePage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="UI\Pages\Sale_Page\SalesView.xaml">
+    <Page Update="UI\Pages\Sale_Page\SalesPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UI\Resource\Dictionary1.xaml">

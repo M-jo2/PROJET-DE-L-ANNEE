@@ -8,18 +8,17 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;
 
 namespace MyPopuStore.UI.Pages.CategoryPriceManagerPage
 {
-    class CategoryPriceManagerViewModel :INotifyPropertyChanged
+    class CategoryPriceManagerViewModel : INotifyPropertyChanged
     {
 
-        private string colorChoice ;
+        private string colorChoice;
         private decimal priceChoice;
-
-
         private CategoryPrice categoryPriceOfProduct;
 
         public CategoryPrice CategoryPriceOfProduct
@@ -55,7 +54,7 @@ namespace MyPopuStore.UI.Pages.CategoryPriceManagerPage
             }
             set
             {
-                if(value.Count() > 0)
+                if (value.Length > 0)
                 {
                     if (value.Last() == ',') value = value + "0";
                     if (decimal.TryParse(value, out priceChoice))
@@ -74,13 +73,20 @@ namespace MyPopuStore.UI.Pages.CategoryPriceManagerPage
 
         public void CreateCategoryPrice()
         {
-            CategoryPriceServices cat = new CategoryPriceServices();
-            CategoryPriceServices.add(colorChoice,priceChoice);
+            CategoryPriceServices.Add(colorChoice, priceChoice);
         }
 
         public void DeleteCategoryPrice(CategoryPrice categoryPrice)
         {
-            CategoryPriceServices.delete(categoryPrice);
+            try
+            {
+                CategoryPriceServices.Delete(categoryPrice);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Win32;
 using MyPopuStore.BU;
 using MyPopuStore.DAL.DB;
 using MyPopuStore.UI.Pages.CategoryPriceManagerPage;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace MyPopuStore.UI.Pages.Product_Page
 {
@@ -21,6 +23,7 @@ namespace MyPopuStore.UI.Pages.Product_Page
         private string code;
         private string label;
         private int quantityStock;
+
 
         public CategoryPrice CategoryPriceOfProduct
         {
@@ -84,25 +87,36 @@ namespace MyPopuStore.UI.Pages.Product_Page
             }
         }
 
+        public AddProductViewModel()
+        {
+            
+        }
+
         public void SetPictureProduct()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
+            openFileDialog.Filter = "All files (*.*)|*.*";
             if (openFileDialog.ShowDialog() == true)
                 PictureProduct = openFileDialog.FileName;
         }
-        public void createProduct()
+        public void CreateProduct()
         {
-            ProductServices.addProduct(Code, Label, CategoryPriceOfProduct, QuantityStock, PictureProduct);
+            try
+            {
+                ProductServices.AddProduct(Code, Label, CategoryPriceOfProduct, QuantityStock, PictureProduct);
+            }catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            
         }
 
-        public void setCategoryPrice()
+        public void SetCategoriesPrices()
         {
-            CategoryPriceManager cat = new CategoryPriceManager();
+            CategoryPriceManager cat = new();
             if (cat.ShowDialog() == true)
             {
                 CategoryPriceOfProduct = cat.ChoiceCat;
-
             }
         }
 

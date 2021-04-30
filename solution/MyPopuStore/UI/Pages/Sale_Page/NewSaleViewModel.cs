@@ -27,6 +27,11 @@ namespace MyPopuStore.UI.Pages.Sale_Page
             }
             set
             {
+                if (ProductServices.ProductIsUsed(value))
+                {
+                    Product product = ProductServices.GetProduct(value);
+                    NewSaleDetailPrice = CategoryPriceServices.GetPrice((int)product.CategoryPriceId).Price;
+                }
                 newSaleDetailCode = value;
                 OnPropertyChanged();
             }
@@ -35,7 +40,6 @@ namespace MyPopuStore.UI.Pages.Sale_Page
         {
             get
             {
-
                 return newSaleDetailQuantity;
             }
             set
@@ -48,7 +52,6 @@ namespace MyPopuStore.UI.Pages.Sale_Page
         {
             get
             {
-
                 return newSaleDetailPrice;
             }
             set
@@ -92,7 +95,7 @@ namespace MyPopuStore.UI.Pages.Sale_Page
 
         public void AddProductToSale()
         {
-            Product product = ProductServices.getProduct(NewSaleDetailCode);
+            Product product = ProductServices.GetProduct(NewSaleDetailCode);
             SaleDetail saleDetail = new SaleDetail()
             {
                 NbProduct = newSaleDetailQuantity,
