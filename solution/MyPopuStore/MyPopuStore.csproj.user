@@ -19,6 +19,12 @@
     <Compile Update="UI\Pages\Sale_Page\SalesPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UI\Resource\User_Control\CategoryPriceControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UI\Resource\User_Control\SaleDetailControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
@@ -40,6 +46,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UI\Resource\DictionarySales.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Resource\User_Control\CategoryPriceControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Resource\User_Control\SaleDetailControl.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -1,4 +1,5 @@
 ﻿using MyPopuStore.DAL.DB;
+using MyPopuStore.UI.Resource.User_Control;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,8 @@ namespace MyPopuStore.UI.Pages.CategoryPriceManagerPage
     public partial class CategoryPriceManager : Window
     {
         CategoryPriceManagerViewModel categoryPriceManagerViewModel;
-        public CategoryPrice ChoiceCat; 
+        public CategoryPrice ChoiceCat { get; set; } 
+
         public CategoryPriceManager()
         {
             InitializeComponent();
@@ -32,7 +34,6 @@ namespace MyPopuStore.UI.Pages.CategoryPriceManagerPage
         {
             categoryPriceManagerViewModel = new CategoryPriceManagerViewModel();
             this.DataContext = categoryPriceManagerViewModel;
-            ListOfAllCategories.ItemsSource = categoryPriceManagerViewModel.AllCategories;
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -43,20 +44,17 @@ namespace MyPopuStore.UI.Pages.CategoryPriceManagerPage
         private void AddCategoryPrice_Click(object sender, RoutedEventArgs e)
         {
             categoryPriceManagerViewModel.CreateCategoryPrice();
-            ListOfAllCategories.ItemsSource = categoryPriceManagerViewModel.AllCategories;
         }
 
         private void SelectPrice_Click(object sender, RoutedEventArgs e)
         {
-            ChoiceCat = (CategoryPrice)((Button)sender).DataContext;
+            ChoiceCat = (CategoryPrice)((CategoryPriceControl)sender).DataContext;
             this.DialogResult = true;
         }
 
-        private void DeletePrice_RightClick(object sender, MouseButtonEventArgs e)
+        private void DeletePrice_Click(object sender, RoutedEventArgs e)
         {
-
-            categoryPriceManagerViewModel.DeleteCategoryPrice((CategoryPrice)((Button)sender).DataContext);
-            ListOfAllCategories.ItemsSource = categoryPriceManagerViewModel.AllCategories;
+            categoryPriceManagerViewModel.DeleteCategoryPrice((CategoryPrice)((CategoryPriceControl)sender).DataContext);
         }
     }
 }

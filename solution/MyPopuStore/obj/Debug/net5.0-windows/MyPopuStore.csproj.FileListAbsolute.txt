@@ -143,3 +143,7 @@ D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug
 D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\MyPopuStore.genruntimeconfig.cache
 D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\UI\Pages\Sale_Page\SalesPage.g.cs
 D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\UI\Pages\Sale_Page\SalesPage.baml
+D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\UI\Resource\User_Control\CategoryPriceControl.g.cs
+D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\UI\Resource\User_Control\CategoryPriceControl.baml
+D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\UI\Resource\User_Control\SaleDetailControl.g.cs
+D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\UI\Resource\User_Control\SaleDetailControl.baml

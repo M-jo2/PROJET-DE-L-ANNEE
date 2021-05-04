@@ -1,6 +1,8 @@
-﻿using System;
+﻿using MyPopuStore.DAL.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -42,12 +44,7 @@ namespace MyPopuStore.UI.Pages.Sale_Page
 
         private void NewSale_Click(object sender, RoutedEventArgs e)
         {
-            if (RightView.DataContext == newSaleViewModel)
-            {
-                newSaleViewModel.SaveSale();
-                saleListViewModel.LoadListSale();
-            }
-            else
+            if (RightView.DataContext != newSaleViewModel)
             {
                 RightView.DataContext = newSaleViewModel;
             }
@@ -66,6 +63,18 @@ namespace MyPopuStore.UI.Pages.Sale_Page
         private void AddProductToSale(object sender, RoutedEventArgs e)
         {
             newSaleViewModel.AddProductToSale();
+        }
+
+        private void SaveSale(object sender, RoutedEventArgs e)
+        {
+            newSaleViewModel.SaveSale();
+            saleListViewModel.LoadListSale();
+        }
+
+        private void ProductsBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            String selectedCode = (String)((sender as ComboBox).SelectedItem as Product).Code;
+            ProductsBox.Text = selectedCode;
         }
     }
 }

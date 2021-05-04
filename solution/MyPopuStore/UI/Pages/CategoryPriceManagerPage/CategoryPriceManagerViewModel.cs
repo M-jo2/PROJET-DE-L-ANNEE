@@ -2,6 +2,7 @@
 using MyPopuStore.DAL.DB;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
@@ -16,10 +17,8 @@ namespace MyPopuStore.UI.Pages.CategoryPriceManagerPage
 {
     class CategoryPriceManagerViewModel : INotifyPropertyChanged
     {
-
-        private string colorChoice;
-        private decimal priceChoice;
         private CategoryPrice categoryPriceOfProduct;
+        public ObservableCollection<CategoryPrice> ListCategories { get; set; }
 
         public CategoryPrice CategoryPriceOfProduct
         {
@@ -30,50 +29,30 @@ namespace MyPopuStore.UI.Pages.CategoryPriceManagerPage
             set
             {
                 categoryPriceOfProduct = value;
-                OnPropertyChanged();
-            }
-        }
-        public string ColorChoice
-        {
-            get
-            {
-                return colorChoice;
-            }
-            set
-            {
-                colorChoice = value;
-                OnPropertyChanged();
             }
         }
 
-        public string PriceChoice
+        public CategoryPriceManagerViewModel()
         {
-            get
-            {
-                return priceChoice.ToString();
-            }
-            set
-            {
-                if (value.Length > 0)
-                {
-                    if (value.Last() == ',') value = value + "0";
-                    if (decimal.TryParse(value, out priceChoice))
-                    {
-                        priceChoice = Math.Round(priceChoice, 2);
-                        OnPropertyChanged();
-                    }
-                }
-            }
+            categoryPriceOfProduct = new();
+            ListCategories = new();
+            LoadCategories();
         }
 
-        public List<CategoryPrice> AllCategories
+        public void LoadCategories()
         {
-            get { return CategoryPriceServices.GetAllPrice(); }
+            List<CategoryPrice> categoryPrices = CategoryPriceServices.GetAllPrice();
+            ListCategories.Clear();
+            foreach (CategoryPrice categoryPrice in categoryPrices)
+            {
+                ListCategories.Add(categoryPrice);
+            }
         }
 
         public void CreateCategoryPrice()
         {
-            CategoryPriceServices.Add(colorChoice, priceChoice);
+            CategoryPriceServices.Add(CategoryPriceOfProduct.Color, CategoryPriceOfProduct.Price);
+            LoadCategories();
         }
 
         public void DeleteCategoryPrice(CategoryPrice categoryPrice)
@@ -81,6 +60,7 @@ namespace MyPopuStore.UI.Pages.CategoryPriceManagerPage
             try
             {
                 CategoryPriceServices.Delete(categoryPrice);
+                LoadCategories();
             }
             catch (Exception e)
             {

@@ -13,7 +13,13 @@ namespace MyPopuStore.UI.Pages.Sale_Page
     class SaleDetailViewModel : INotifyPropertyChanged
     {
         private List<SaleDetailUI> listSaleDetails;
-        public int NewSaleInputHeight{get => 0;}
+        public int NewSalePannelHeigh
+        {
+            get
+            {
+                return 0;
+            }
+        }
         public List<SaleDetailUI> ListSaleDetails
         {
             get

@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="MyPopuStore.UI.Resource.User_Control.CategoryPriceControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MyPopuStore.UI.Resource.User_Control"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="100">
+
+
+    <Grid x:Name="GridParent"
+          Height="40"
+            Width="40">
+
+
+        <Button
+            Background="{Binding ColorPrice,Mode=TwoWay,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}}}"
+            Click="MainButton_Click"
+            >
+            <Viewbox>
+                <TextBlock Text="{Binding Price,Mode=TwoWay,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}}}"/>
+            </Viewbox>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="CornerRadius" Value="10"/>
+                            <Setter Property="BorderBrush" Value="LightGray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+
+
+        <Button
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Height="15"
+            Width="15"
+            Background="White"
+            x:Name="DeleteButton"
+            Click="DeleteButton_Click"
+            Visibility="{Binding DeleteButtonVisible,Mode=TwoWay,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}}}">
+            <Viewbox>
+                <Image Source="/Pictures/Logo/logo_delete.png" />
+            </Viewbox>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="100"/>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Height" Value="20"/>
+                            <Setter Property="Width" Value="20"/>
+                            <Setter Property="CornerRadius" Value="10"/>
+                            <Setter Property="BorderBrush" Value="IndianRed"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+    </Grid>
+</UserControl>

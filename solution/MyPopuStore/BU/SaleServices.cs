@@ -33,8 +33,7 @@ namespace MyPopuStore.BU
             using (MyPopupStoreDBContext db = new())
             {
                 decimal? total = 0;
-                total = db.SaleDetails.Where(e => e.SaleId == SaleID).Sum(e => e.Price);
-                if (total == null) throw new Exception("Quantité de produit null");
+                total = db.SaleDetails.Where(e => e.SaleId == SaleID).Sum(e => e.Price*e.NbProduct);
                 return (decimal)total;
             }
         }
@@ -47,7 +46,7 @@ namespace MyPopuStore.BU
             }
         }
 
-        public static void NewSale(List<SaleDetail> saleDetails,bool paymentType)
+        public static void NewSale(List<SaleDetail> saleDetails,bool paymentType,bool decrementQuantityStock=true)
         {
             using(MyPopupStoreDBContext db = new())
             {
@@ -59,7 +58,21 @@ namespace MyPopuStore.BU
                 };
                 sale.SaleDetails = saleDetails;
 
+                
                 db.Sales.Add(sale);
+
+                if (decrementQuantityStock)
+                {
+                    foreach(SaleDetail saleDetail in saleDetails)
+                    {
+                        Product product = ProductServices.GetProduct(saleDetail.ProductCode);
+                        product.QuantityStock -= saleDetail.NbProduct;
+
+                        if (product.QuantityStock < 0) throw new Exception("Pas assez de '" + product.Label+"' dans le stock");
+                        db.Products.Update(product);
+                    }
+                }
+
                 db.SaveChanges();
             }
         }

@@ -2,6 +2,7 @@
 using MyPopuStore.DAL.DB;
 using MyPopuStore.UI.Pages.CategoryPriceManagerPage;
 using MyPopuStore.UI.Pages.Product_Page;
+using MyPopuStore.UI.Resource.User_Control;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -66,7 +67,7 @@ namespace MyPopuStore.UI.Pages.Product_Page
 
         private void SetCatPrice_Click(object sender, RoutedEventArgs e)
         {
-            ProductUI product = (((sender as Button).Parent as Grid).DataContext as ProductUI) ;
+            ProductUI product = (((sender as CategoryPriceControl).Parent as Grid).DataContext as ProductUI) ;
             productPageViewModel.SetCategoriesPrice(product);
         }
 

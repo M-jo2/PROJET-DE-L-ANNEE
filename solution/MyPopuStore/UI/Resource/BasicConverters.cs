@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Media;
@@ -34,22 +35,38 @@ namespace MyPopuStore.UI.Resource
         }
     }
 
-    public class DecimalToStringConverter : IValueConverter
+    public class PriceToStringConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             string result = value != null ? ((decimal)value).ToString() : "null";
+            if (result.EndsWith(",0")) result =  result.Split(',')[0]+',';
+            if (result == "0") result = "";
             return result;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             Decimal equivalent;
-            if (Decimal.TryParse((string)value, out equivalent))
+
+            string texte = (string)value;
+            texte = Regex.Replace(texte, "[^0-9+\\,]", "");
+
+            string[] textes = texte.Split(',');
+            if (textes.Length > 1)
+            {
+                textes[1] += textes[1].Length == 0 ? "0":"";
+                textes[1] = textes[1].Length > 2 ? textes[1].Substring(0, 2):textes[1];
+
+                texte = textes[0] +','+ textes[1];
+            }
+            else texte = textes[0];
+
+            if (Decimal.TryParse(texte, out equivalent))
             {
                 return equivalent;
             }
-            return -1;
+            return 0;
         }
     }
 

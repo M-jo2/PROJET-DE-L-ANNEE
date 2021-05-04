@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="MyPopuStore.UI.Resource.User_Control.SaleDetailControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MyPopuStore.UI.Resource.User_Control"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/UI/Resource/Dictionary1.xaml"/>
+                <ResourceDictionary Source="/UI/Resource/DictionarySales.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </UserControl.Resources>
+    <Grid Height="70"
+            MinWidth="150"
+            Background="#aff" 
+            Margin="3">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="50"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Grid.Column="0" 
+                Margin="5" 
+                Source="{Binding ProductPicture,Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
+
+        <TextBlock Grid.Column="1"
+                    VerticalAlignment="Center"
+                    Text="{Binding ProductCode,Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
+
+        <TextBlock Grid.Column="2" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center"
+                    Text="{Binding ProductLabel,Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
+
+        <TextBlock Grid.Column="3" 
+                    VerticalAlignment="Center"
+                    Text="{Binding SaleDetailPrice,Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
+
+        <TextBlock Grid.Column="4" 
+                VerticalAlignment="Center"
+                Text="{Binding SaleDetailNbProduct,Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
+
+    </Grid>
+</UserControl>

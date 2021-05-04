@@ -45,6 +45,13 @@ namespace MyPopuStore.BU
                 return db.SaleDetails.Where(e => e.ProductCode == code).Any();
             }
         }
+        public static bool ProductExist(string code)
+        {
+            using (MyPopupStoreDBContext db = new())
+            {
+                return db.Products.Where(e => e.Code == code).Any();
+            }
+        }
 
         public static void RemoveProduct(string code)
         {
@@ -72,11 +79,11 @@ namespace MyPopuStore.BU
                 return db.Products.Find(code);
             }
         }
-        public static List<Product> GetAllProduct() 
+        public static List<Product> GetAllProduct(string codeStartWith="") 
         {
             using (MyPopupStoreDBContext db = new MyPopupStoreDBContext())
             {
-                List < Product > products = db.Products.ToList();
+                List < Product > products = db.Products.Where(e => e.Code.StartsWith(codeStartWith)).ToList();
                 return products;
             }
         }
