@@ -12,16 +12,15 @@ using System.Windows;
 
 namespace MyPopuStore.UI.Pages.Sale_Page
 {
-    
+
     class NewSaleViewModel : INotifyPropertyChanged
     {
-        public  ObservableCollection<SaleDetailUI> ListSaleDetails { get; set; }
+        public ObservableCollection<SaleDetailUI> ListSaleDetails { get; set; }
         public ObservableCollection<Product> ComboBoxPropositionProducts { get; set; }
 
         private string newSaleDetailCode;
         private int newSaleDetailQuantity;
         private decimal newSaleDetailPrice;
-
         public String NewSaleDetailCode
         {
             get
@@ -31,16 +30,24 @@ namespace MyPopuStore.UI.Pages.Sale_Page
             }
             set
             {
-                ComboBoxPropositionProducts.Clear();
-                foreach (Product product in ProductServices.GetAllProduct(value)) ComboBoxPropositionProducts.Add(product);
-
-                if (ProductServices.ProductExist(value))
+                if (value != null)
                 {
-                    Product product = ComboBoxPropositionProducts.First();
-                    NewSaleDetailPrice = CategoryPriceServices.GetPrice((int)product.CategoryPriceId).Price;
-                }
+                    ComboBoxPropositionProducts.Clear();
+                    foreach (Product product in ProductServices.GetAllProduct(value)) ComboBoxPropositionProducts.Add(product);
+                
+                
+                    if (ComboBoxPropositionProducts.Any())
+                    {
+                        if (ProductServices.ProductExist(value))
+                        {
+                            Product product = ComboBoxPropositionProducts.First();
+                            NewSaleDetailPrice = CategoryPriceServices.GetPrice((int)product.CategoryPriceId).Price;
+                        }
+                    }
+                
 
-                newSaleDetailCode = value;
+                    newSaleDetailCode = value;
+                }
                 OnPropertyChanged();
             }
         }
@@ -85,14 +92,14 @@ namespace MyPopuStore.UI.Pages.Sale_Page
             ComboBoxPropositionProducts = new(ProductServices.GetAllProduct());
             newSaleDetailCode = "";
             newSaleDetailQuantity = 0;
-            newSaleDetailPrice=0;
+            newSaleDetailPrice = 0;
         }
 
 
         public void SaveSale()
         {
             List<SaleDetail> saleDetails = new();
-            foreach(SaleDetailUI saleDetailUi in ListSaleDetails)
+            foreach (SaleDetailUI saleDetailUi in ListSaleDetails)
             {
                 saleDetails.Add(saleDetailUi.SaleDetail);
             }
@@ -100,11 +107,12 @@ namespace MyPopuStore.UI.Pages.Sale_Page
             {
                 SaleServices.NewSale(saleDetails, PaymentType);
                 ListSaleDetails.Clear();
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 MessageBox.Show(e.Message);
             }
-            
+
         }
 
         public void AddProductToSale()
@@ -118,10 +126,10 @@ namespace MyPopuStore.UI.Pages.Sale_Page
                 ProductCode = NewSaleDetailCode
             };
             ListSaleDetails.Add(new SaleDetailUI()
-                {
-                    Product = product,
-                    SaleDetail = saleDetail
-                }
+            {
+                Product = product,
+                SaleDetail = saleDetail
+            }
             );
         }
 
@@ -131,6 +139,6 @@ namespace MyPopuStore.UI.Pages.Sale_Page
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        
+
     }
 }

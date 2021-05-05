@@ -70,11 +70,5 @@ namespace MyPopuStore.UI.Pages.Sale_Page
             newSaleViewModel.SaveSale();
             saleListViewModel.LoadListSale();
         }
-
-        private void ProductsBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            String selectedCode = (String)((sender as ComboBox).SelectedItem as Product).Code;
-            ProductsBox.Text = selectedCode;
-        }
     }
 }
