@@ -1,0 +1,175 @@
+﻿<Page x:Class="MyPopuStore.UI.Pages.Sale_Page.NewSalePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MyPopuStore.UI.Pages.Sale_Page" 
+      xmlns:uc="clr-namespace:MyPopuStore.UI.Resource.User_Control"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="NewSalePage">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/UI/Resource/Dictionary1.xaml"/>
+                <ResourceDictionary Source="/UI/Resource/DictionarySales.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </Page.Resources>
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <GroupBox Grid.Column="0" 
+                      Padding="10"
+                      Style="{StaticResource GroupBoxStyle1}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height=" *"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <GroupBox Grid.Row="0" 
+                              Style="{StaticResource GroupBoxStyle1}" >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="40"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Row="0"
+                                       Grid.Column="0" 
+                                       Grid.ColumnSpan="4"
+                                       HorizontalAlignment="Center"
+                                       FontSize="13" FontWeight="Bold" 
+                                       Text="Nouvelle vente"/>
+
+                        <StackPanel Grid.Row="1"
+                                        Grid.Column="0">
+                            <TextBlock Text="Code produit" 
+                                           HorizontalAlignment="Center"/>
+
+                            <TextBox x:Name="EntryCode"
+                                        Style="{StaticResource CodeEntry}" 
+                                         Text="{Binding NewSaleDetailCode,UpdateSourceTrigger=PropertyChanged}" 
+                                         Width="50"/>
+                            <Popup Name="myPopup" 
+                                       Placement="MousePoint" 
+                                       IsOpen="{Binding ElementName=EntryCode, Path=IsFocused,Mode=OneWay}">
+
+                                <ListView Name="myPopupText"
+                                              ItemsSource="{Binding ComboBoxPropositionProducts}"
+                                              SelectedValue="{Binding ElementName=EntryCode,Path=Text}"
+                                              SelectedValuePath="Code">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="30"/>
+                                                    <ColumnDefinition Width="30"/>
+                                                    <ColumnDefinition Width="auto"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Image Source="{Binding Picture}" Grid.Column="0"/>
+                                                <TextBlock Text="{Binding Code}" Grid.Column="1" Foreground="DarkGray"/>
+                                                <TextBlock Text="{Binding Label}" Grid.Column="2"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </Popup>
+
+                        </StackPanel >
+
+                        <StackPanel Grid.Row="1" 
+                                        Grid.Column="1" >
+                            <TextBlock Text="Quantité"
+                                           HorizontalAlignment="Center"/>
+                            <TextBox Text="{Binding NewSaleDetailQuantity, Converter={StaticResource IntToStringConverter},UpdateSourceTrigger=PropertyChanged}"
+                                         Width="50"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" 
+                                        Grid.Column="2">
+                            <TextBlock Text="Prix/unité"
+                                           HorizontalAlignment="Center"/>
+                            <TextBox Text="{Binding NewSaleDetailPrice , Converter={StaticResource PriceToStringConverter},UpdateSourceTrigger=PropertyChanged}"
+                                         Width="50"/>
+                        </StackPanel>
+                        <Button Grid.Row="1"
+                                    Grid.Column="4" 
+                                    Style="{StaticResource buttonPositiveAction}"
+                                    Content="Ajout" 
+                                    Click="AddProductToSale"/>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="2" 
+                              Style="{StaticResource GroupBoxStyle1}" 
+                              Padding="10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+
+                        </Grid.ColumnDefinitions>
+
+                        <CheckBox  HorizontalAlignment="Center"
+                                        IsChecked="{Binding PaymentType}"
+                                        x:Name="PaymentTypeCheckBox">
+                            <Image Height="30"  Source="{Binding ElementName=PaymentTypeCheckBox, Path=IsChecked, Converter={StaticResource PaymentTypeToLogoConverter}}"/>
+                        </CheckBox>
+
+                        <Button Grid.Column="1" 
+                                Style="{StaticResource buttonPositiveAction}"
+                                Content="Valider" 
+                                Click="SaveSale"/>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Column="1" 
+                      Padding="10"
+                      Style="{StaticResource GroupBoxStyle1}">
+            <ScrollViewer Grid.Row="1" 
+                                  VerticalScrollBarVisibility="Auto">
+                <ItemsControl  ItemsSource="{Binding ListSaleDetails}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <uc:SaleDetailControl ProductPicture="{Binding Product.Picture}"
+                                                      ProductCode="{Binding Product.Code}"
+                                                      ProductLabel="{Binding Product.Label}"
+                                                      SaleDetailPrice="{Binding SaleDetail.Price,Converter={StaticResource PriceToStringConverter}}"
+                                                      SaleDetailNbProduct="{Binding SaleDetail.NbProduct,Converter={StaticResource IntToStringConverter}}"
+                                                      IsDeletable="True"
+                                                      DeleteButtonClick="DeleteSaleDetailButtonClick"/>
+                                
+                            </StackPanel>
+                            
+                            
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </GroupBox>
+    </Grid>
+</Page>

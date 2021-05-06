@@ -126,11 +126,17 @@ namespace MyPopuStore.UI.Pages.Sale_Page
                 ProductCode = NewSaleDetailCode
             };
             ListSaleDetails.Add(new SaleDetailUI()
-            {
-                Product = product,
-                SaleDetail = saleDetail
-            }
+                {
+                    Product = product,
+                    SaleDetail = saleDetail
+                }
             );
+            
+        }
+
+        public void DeleteProductToSale(SaleDetailUI index)
+        {
+            ListSaleDetails.Remove(index);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

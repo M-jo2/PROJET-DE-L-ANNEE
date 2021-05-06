@@ -22,7 +22,6 @@ namespace MyPopuStore.UI.Pages.Product_Page
         public ObservableCollection<ProductUI> ListProduct {
             get { return listProduct; }
         }
-
         public ProductPageViewModel()
         {
             listProduct = new();
@@ -57,35 +56,37 @@ namespace MyPopuStore.UI.Pages.Product_Page
             {
                 MessageBox.Show(e.Message);
             }
-            
         }
 
-        public void SetCategoriesPrice(ProductUI productUI)
+        public void SetCategoriesPrice(Product product)
         {
             CategoryPriceManager cat = new();
             if (cat.ShowDialog() == true)
             {
-                productUI.Product.CategoryPriceId = cat.ChoiceCat.CategoryPriceId;
+                product.CategoryPriceId = cat.ChoiceCat.CategoryPriceId;
             }
-            ProductServices.UpdateProduct(productUI.Product);
-
-            RefreshProductList();
+            UpdateProduct(product);
         }
-        public void SetPictureProduct(ProductUI productUI)
+        public void SetPictureProduct(Product product)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "All files (*.*)|*.*";
             if (openFileDialog.ShowDialog() == true)
-                productUI.Product.Picture = openFileDialog.FileName;
+                product.Picture = openFileDialog.FileName;
+            UpdateProduct(product);
+        }
 
+        public void UpdateProduct(Product product)
+        {
             try
             {
-                ProductServices.UpdateProduct(productUI.Product);
+                ProductServices.UpdateProduct(product);
             }
-            catch
+            catch(Exception e)
             {
-                RefreshProductList();
+                MessageBox.Show("Update impossible : \n"+e.Message);
             }
+            RefreshProductList();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

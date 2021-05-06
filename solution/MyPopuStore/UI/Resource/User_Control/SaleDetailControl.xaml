@@ -25,6 +25,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
 
         <Image Grid.Column="0" 
@@ -47,6 +48,14 @@
         <TextBlock Grid.Column="4" 
                 VerticalAlignment="Center"
                 Text="{Binding SaleDetailNbProduct,Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
-
+        
+        <Button Grid.Column="5" 
+                Background="Transparent"
+                BorderBrush="Transparent"
+                Width="30"
+                Visibility="{Binding DeleteButtonVisible,Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
+                Click="DeleteButton_Click">
+            <Image Source="/Pictures/Logo/logo_delete.png" />
+        </Button>
     </Grid>
 </UserControl>

@@ -63,11 +63,42 @@ namespace MyPopuStore.UI.Resource.User_Control
           "SaleDetailNbProduct", typeof(string), typeof(SaleDetailControl));
 
 
+        private bool isDeletable;
+        public bool IsDeletable
+        {
+            get { return isDeletable; }
+            set { 
+                isDeletable = value;
+                if (isDeletable) DeleteButtonVisible = Visibility.Visible;
+                else DeleteButtonVisible = Visibility.Collapsed;
+            }
+        }
 
+        public Visibility DeleteButtonVisible
+        {
+            get { return (Visibility)this.GetValue(DeleteButtonVisibleProperty); }
+            set { this.SetValue(DeleteButtonVisibleProperty, value); }
+        }
+        public static readonly DependencyProperty DeleteButtonVisibleProperty = DependencyProperty.Register(
+          "DeleteButtonVisible", typeof(Visibility), typeof(SaleDetailControl));
 
         public SaleDetailControl()
         {
             InitializeComponent();
+            IsDeletable = false;
+        }
+
+        public static readonly RoutedEvent DeleteButtonClickEvent = EventManager.RegisterRoutedEvent(
+                                    "DeleteSaleDetailButtonClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(SaleDetailControl));
+        public event RoutedEventHandler DeleteButtonClick
+        {
+            add { AddHandler(DeleteButtonClickEvent, value); }
+            remove { RemoveHandler(DeleteButtonClickEvent, value); }
+        }
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            RoutedEventArgs newEventArgs = new RoutedEventArgs(SaleDetailControl.DeleteButtonClickEvent);
+            RaiseEvent(newEventArgs);
         }
     }
 }

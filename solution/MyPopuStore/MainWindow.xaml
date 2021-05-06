@@ -24,6 +24,7 @@
         </Grid.ColumnDefinitions>
 
         <GroupBox Grid.Column="0" BorderBrush="LightGray" BorderThickness="0,0,5,0">
+            
             <Grid >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
@@ -32,13 +33,13 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="40"/>
                 </Grid.RowDefinitions>
-                
+
                 <Button Grid.Row="0" 
                         x:Name="MenuBar_ProductButton" 
                         Content="Produit" 
                         Style="{StaticResource buttonMenuBarStyle}"
                         Click="MenuBar_ProductButton_Click"/>
-                
+
                 <Button Grid.Row="1" 
                         x:Name="MenuBar_CashRegisterButton" 
                         Content="Caisse "
@@ -50,16 +51,16 @@
                         Content="Gestion" 
                         Style="{StaticResource buttonMenuBarStyle}"
                         Click="MenuBar_ManageButton_Click"/>
-                
+
                 <Button Grid.Row="4" 
                         x:Name="MenuBar_ExitButton" 
                         Content="Exit" 
                         Style="{StaticResource buttonExitStyle}" 
                         Click="MenuBar_ExitButton_Click"/>
 
-
             </Grid>
         </GroupBox>
         <Frame Grid.Column="1" x:Name="ZoneContent" NavigationUIVisibility="Hidden"/>
+        
     </Grid>
 </Window>

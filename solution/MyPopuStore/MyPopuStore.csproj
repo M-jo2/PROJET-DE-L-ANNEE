@@ -36,8 +36,4 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UI\Pages\Product_Page\UserControl\" />
-  </ItemGroup>
-
 </Project>

@@ -61,19 +61,38 @@ namespace MyPopuStore.UI.Pages.Product_Page
 
         private void SetPicture_Click(object sender, RoutedEventArgs e)
         {
-            ProductUI product = (ProductUI)((Button)sender).DataContext;
-            productPageViewModel.SetPictureProduct(product);
+            ProductUI productUI = (sender as Button).DataContext as ProductUI;
+            if (productUI != null)
+            {
+                productPageViewModel.SetPictureProduct(productUI.Product);
+            }
         }
 
         private void SetCatPrice_Click(object sender, RoutedEventArgs e)
         {
-            ProductUI product = (((sender as CategoryPriceControl).Parent as Grid).DataContext as ProductUI) ;
-            productPageViewModel.SetCategoriesPrice(product);
+            ProductUI productUI = ((sender as CategoryPriceControl).Parent as Grid).DataContext as ProductUI ;
+            if (productUI != null)
+            {
+                productPageViewModel.SetCategoriesPrice(productUI.Product);
+            }
         }
 
         private void DeleteProduct_Click(object sender, RoutedEventArgs e)
         {
-            productPageViewModel.DeleteProduct(((ProductUI)((Button)sender).DataContext).Product.Code);
+            ProductUI productUI = ((sender as Button).DataContext as ProductUI);
+            if (productUI != null)
+            {
+                productPageViewModel.DeleteProduct(productUI.Product.Code);
+            }
+        }
+
+        private void UIStock_LostFocus(object sender, RoutedEventArgs e)
+        {
+            ProductUI productUI = ((sender as TextBox).DataContext as ProductUI);
+            if(productUI != null)
+            {
+                productPageViewModel.UpdateProduct(productUI.Product);
+            }
         }
     }
 }

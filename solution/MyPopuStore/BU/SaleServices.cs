@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 namespace MyPopuStore.BU
 {
     using DAL.DB;
+    using System.Runtime.InteropServices;
+
     class SaleServices
     {
         public static List<Sale> getAllSales()
@@ -46,9 +48,31 @@ namespace MyPopuStore.BU
             }
         }
 
+        public static bool EnoughProductInStock(List<SaleDetail> saleDetails)
+        {
+            Dictionary<string,int> codesQuantities = new Dictionary<string, int>();
+            foreach (SaleDetail saleDetail in saleDetails)
+            {
+                if (codesQuantities.ContainsKey(saleDetail.ProductCode)) codesQuantities[saleDetail.ProductCode] += (int)saleDetail.NbProduct;
+                else codesQuantities.Add(saleDetail.ProductCode, (int)saleDetail.NbProduct);
+            }
+            foreach (KeyValuePair<string,int> codeQuantity in codesQuantities)
+            {
+                Product product = ProductServices.GetProduct(codeQuantity.Key);
+                if (product.QuantityStock - codeQuantity.Value < 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         public static void NewSale(List<SaleDetail> saleDetails,bool paymentType,bool decrementQuantityStock=true)
         {
-            using(MyPopupStoreDBContext db = new())
+            if(decrementQuantityStock && !EnoughProductInStock(saleDetails))
+                throw new Exception("Produit manquant dans le stock.");
+
+            using (MyPopupStoreDBContext db = new())
             {
                 
                 Sale sale = new()
@@ -57,23 +81,19 @@ namespace MyPopuStore.BU
                     Date = DateTime.Now
                 };
                 sale.SaleDetails = saleDetails;
-
                 
                 db.Sales.Add(sale);
-
-                if (decrementQuantityStock)
-                {
-                    foreach(SaleDetail saleDetail in saleDetails)
-                    {
-                        Product product = ProductServices.GetProduct(saleDetail.ProductCode);
-                        product.QuantityStock -= saleDetail.NbProduct;
-
-                        if (product.QuantityStock < 0) throw new Exception("Pas assez de '" + product.Label+"' dans le stock");
-                        db.Products.Update(product);
-                    }
-                }
-
                 db.SaveChanges();
+            }
+
+            if (decrementQuantityStock)
+            {
+                foreach (SaleDetail saleDetail in saleDetails)
+                {
+                    Product product = ProductServices.GetProduct(saleDetail.ProductCode);
+                    product.QuantityStock -= saleDetail.NbProduct;
+                    ProductServices.UpdateProduct(product);
+                }
             }
         }
     }

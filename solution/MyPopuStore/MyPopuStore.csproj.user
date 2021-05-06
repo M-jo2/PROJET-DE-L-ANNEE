@@ -16,6 +16,12 @@
     <Compile Update="UI\Pages\Product_Page\ProductPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UI\Pages\Sale_Page\NewSalePage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UI\Pages\Sale_Page\RegistredSalePage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UI\Pages\Sale_Page\SalesPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -37,6 +43,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UI\Pages\Product_Page\ProductPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Pages\Sale_Page\NewSalePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Pages\Sale_Page\RegistredSalePage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UI\Pages\Sale_Page\SalesPage.xaml">

@@ -17,7 +17,7 @@
         </ResourceDictionary>
 
     </Page.Resources>
-
+    <!--
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -241,4 +241,13 @@
             </GroupBox>
         </Grid>
     </Grid>
+    -->
+    <TabControl>
+        <TabItem Header="Nouvelle Vente">
+            <Frame x:Name="NewSaleFrame"/>
+        </TabItem>
+        <TabItem Header="Liste des Ventes">
+            <Frame x:Name="RegistredSaleFrame"/>
+        </TabItem>
+    </TabControl>
 </Page>

@@ -136,10 +136,10 @@
 
                                 <TextBox x:Name="UIStock" 
                                      Grid.Column="4"  
-                                     Text="{Binding Product.QuantityStock, Converter={StaticResource IntToStringConverter},UpdateSourceTrigger=PropertyChanged}"
+                                     Text="{Binding Product.QuantityStock,UpdateSourceTrigger=PropertyChanged}"
+                                     LostFocus="UIStock_LostFocus"
                                      Height="30" 
-                                     Width="50" 
-                                         
+                                     Width="50"
                                      VerticalContentAlignment="Center" 
                                      HorizontalContentAlignment="Center" />
 
