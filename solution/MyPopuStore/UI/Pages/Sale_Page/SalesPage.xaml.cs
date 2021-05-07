@@ -19,6 +19,9 @@ namespace MyPopuStore.UI.Pages.Sale_Page
 {
     public partial class SalesPage : Page
     {
+        NewSalePage newSalePage;
+        RegistredSalePage registredSalePage;
+
         public SalesPage()
         {
             InitializeComponent();
@@ -26,8 +29,18 @@ namespace MyPopuStore.UI.Pages.Sale_Page
         }
         private void PopulateAndBind()
         {
-            RegistredSaleFrame.Content = new RegistredSalePage();
-            NewSaleFrame.Content = new NewSalePage();
+            newSalePage = new();
+            registredSalePage = new();
+
+            newSalePage.SaleSaved += this.NewSaleAdded;
+
+            RegistredSaleFrame.Content = registredSalePage;
+            NewSaleFrame.Content = newSalePage;
+        }
+
+        private  void NewSaleAdded(object sender, EventArgs e)
+        {
+            registredSalePage.RefreshList();
         }
     }
 }

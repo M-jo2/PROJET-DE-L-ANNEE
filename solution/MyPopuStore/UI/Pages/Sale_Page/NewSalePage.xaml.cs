@@ -23,6 +23,8 @@ namespace MyPopuStore.UI.Pages.Sale_Page
     {
         private NewSaleViewModel newSaleViewModel;
 
+        public event EventHandler SaleSaved;
+
         public NewSalePage()
         {
             InitializeComponent();
@@ -45,6 +47,7 @@ namespace MyPopuStore.UI.Pages.Sale_Page
         private void SaveSale(object sender, RoutedEventArgs e)
         {
             newSaleViewModel.SaveSale();
+            SaleSaved(this, new EventArgs());
         }
 
         private void DeleteSaleDetailButtonClick(object sender, RoutedEventArgs e)
@@ -52,5 +55,6 @@ namespace MyPopuStore.UI.Pages.Sale_Page
             SaleDetailUI index = ((sender as SaleDetailControl).DataContext as SaleDetailUI);
             newSaleViewModel.DeleteProductToSale(index);
         }
+        
     }
 }

@@ -145,7 +145,7 @@
                       Style="{StaticResource GroupBoxStyle1}">
             <ScrollViewer Grid.Row="1" 
                                   VerticalScrollBarVisibility="Auto">
-                <ItemsControl  ItemsSource="{Binding ListSaleDetails}">
+                <ItemsControl  ItemsSource="{Binding SaleDetailUIs}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel/>

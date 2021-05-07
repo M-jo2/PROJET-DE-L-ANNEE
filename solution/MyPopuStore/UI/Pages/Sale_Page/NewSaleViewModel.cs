@@ -15,7 +15,7 @@ namespace MyPopuStore.UI.Pages.Sale_Page
 
     class NewSaleViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<SaleDetailUI> ListSaleDetails { get; set; }
+        public ObservableCollection<SaleDetailUI> SaleDetailUIs { get; set; }
         public ObservableCollection<Product> ComboBoxPropositionProducts { get; set; }
 
         private string newSaleDetailCode;
@@ -88,7 +88,7 @@ namespace MyPopuStore.UI.Pages.Sale_Page
 
         public NewSaleViewModel()
         {
-            ListSaleDetails = new();
+            SaleDetailUIs = new();
             ComboBoxPropositionProducts = new(ProductServices.GetAllProduct());
             newSaleDetailCode = "";
             newSaleDetailQuantity = 0;
@@ -99,44 +99,59 @@ namespace MyPopuStore.UI.Pages.Sale_Page
         public void SaveSale()
         {
             List<SaleDetail> saleDetails = new();
-            foreach (SaleDetailUI saleDetailUi in ListSaleDetails)
+            foreach (SaleDetailUI saleDetailUi in SaleDetailUIs)
             {
                 saleDetails.Add(saleDetailUi.SaleDetail);
             }
             try
             {
                 SaleServices.NewSale(saleDetails, PaymentType);
-                ListSaleDetails.Clear();
+                SaleDetailUIs.Clear();
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
             }
-
         }
 
         public void AddProductToSale()
         {
             Product product = ProductServices.GetProduct(NewSaleDetailCode);
-
             SaleDetail saleDetail = new()
             {
                 NbProduct = newSaleDetailQuantity,
                 Price = newSaleDetailPrice,
                 ProductCode = NewSaleDetailCode
             };
-            ListSaleDetails.Add(new SaleDetailUI()
+            if (NewProductIsValid(saleDetail))
+            {
+                SaleDetailUIs.Add(new SaleDetailUI()
                 {
                     Product = product,
                     SaleDetail = saleDetail
-                }
-            );
+                });
+            }
+            else
+            {
+                MessageBox.Show($"Impossible de réaliser cette vente. {product.QuantityStock} {product.Label} restant en stock. ");
+            }
             
+        }
+
+        private bool NewProductIsValid(SaleDetail saleDetail)
+        {
+            List<SaleDetail> saleDetails = new();
+            foreach(SaleDetailUI saleDetailUI in SaleDetailUIs)
+            {
+                saleDetails.Add(saleDetailUI.SaleDetail);
+            }
+            saleDetails.Add(saleDetail);
+            return SaleServices.EnoughProductInStock(saleDetails);
         }
 
         public void DeleteProductToSale(SaleDetailUI index)
         {
-            ListSaleDetails.Remove(index);
+            SaleDetailUIs.Remove(index);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -21,7 +21,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -33,6 +33,10 @@
 
 
             <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50"/>
                     <ColumnDefinition Width="100"/>
@@ -43,14 +47,21 @@
                 </Grid.ColumnDefinitions>
 
                 <uc:CategoryPriceControl x:Name="UICatPrice" 
+                                         Grid.Row="1"
                                         Click="CatPrice_Click"
                                         DataContext="{Binding CategoryPriceOfProduct}"
                                         ColorPrice="{Binding Color}"
                                         Price="{Binding Price}"/>
-                
-                
+
+                <TextBlock Grid.Column="0"  Text="Prix" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Column="1"  Text="Code" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Column="2"  Text="Libellé" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Column="3"  Text="Image" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Column="4"  Text="Stock" HorizontalAlignment="Center"/>
+
 
                 <TextBox x:Name="UICode" 
+                         Grid.Row="1"
                          Grid.Column="1" 
                          Height="30" 
                          Width="50" 
@@ -59,12 +70,14 @@
                          VerticalContentAlignment="Center" 
                          HorizontalContentAlignment="Center" />
                 <TextBox x:Name="UIProductName" 
+                         Grid.Row="1"
                          Grid.Column="2" 
                          Text="{Binding Label}"
                          Height="30"
                          Width="auto" 
                          VerticalContentAlignment="Center"/>
                 <Button x:Name="UIPicture" 
+                        Grid.Row="1"
                         Grid.Column="3"  
                         Height="70" 
                         Width="70"
@@ -72,6 +85,7 @@
                     <Image Source="{Binding PictureProduct}"/>
                 </Button>
                 <TextBox x:Name="UIStock" 
+                         Grid.Row="1"
                          Grid.Column="4"  
                          Text="{Binding QuantityStock, Converter={StaticResource IntToStringConverter},UpdateSourceTrigger=PropertyChanged}"
                          Height="30" 
@@ -79,9 +93,10 @@
                          VerticalContentAlignment="Center" 
                          HorizontalContentAlignment="Center" />
                 <Button x:Name="AddButton" 
+                        Grid.Row="1"
                         Grid.Column="6" 
                         Content="Ajouter"
-                        Height="50"
+                        Height="40"
                         Width="100"
                         Click="AddProductButton"
                         Style="{StaticResource buttonPositiveAction}"/>

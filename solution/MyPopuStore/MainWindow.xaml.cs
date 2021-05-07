@@ -30,9 +30,9 @@ namespace MyPopuStore
         public MainWindow()
         {
             InitializeComponent();
-            productPage = new();
-            managePage = new();
-            salesPage = new();
+            productPage = new ProductPage();
+            managePage = new ManagePage();
+            salesPage = new SalesPage();
 
             ZoneContent.Content = managePage;
         }
@@ -40,14 +40,21 @@ namespace MyPopuStore
         private void MenuBar_ProductButton_Click(object sender, RoutedEventArgs e)
         {
             if (InfoServices.popupStoreInfoExist())
+            {
+                productPage.Refresh() ;
                 ZoneContent.Content = productPage;
+            }
+                
             else AlertShopNotCreated();
         }
 
         private void MenuBar_CashRegisterButton_Click(object sender, RoutedEventArgs e)
         {
             if (InfoServices.popupStoreInfoExist())
+            {
                 ZoneContent.Content = salesPage;
+            }
+                
             else AlertShopNotCreated();
         }
 
@@ -58,7 +65,7 @@ namespace MyPopuStore
 
         private void MenuBar_ExitButton_Click(object sender, RoutedEventArgs e)
         {
-            System.Windows.Application.Current.Shutdown();
+            Application.Current.Shutdown();
         }
 
         private void AlertShopNotCreated()

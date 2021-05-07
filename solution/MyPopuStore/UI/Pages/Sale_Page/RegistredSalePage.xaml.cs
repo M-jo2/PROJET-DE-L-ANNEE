@@ -38,7 +38,6 @@ namespace MyPopuStore.UI.Pages.Sale_Page
             LeftView.DataContext = saleListViewModel;
         }
 
-
         private void ASaleClick(object sender, RoutedEventArgs e)
         {
             if (RightView.DataContext != saleDetailViewModel)
@@ -47,6 +46,11 @@ namespace MyPopuStore.UI.Pages.Sale_Page
             }
             int saleId = ((sender as Button).DataContext as SaleUI).Sale.SaleId;
             saleDetailViewModel.SetSaleDetailUIs(saleId);
+        }
+
+        public void RefreshList()
+        {
+            saleListViewModel.LoadListSale();
         }
 
     }

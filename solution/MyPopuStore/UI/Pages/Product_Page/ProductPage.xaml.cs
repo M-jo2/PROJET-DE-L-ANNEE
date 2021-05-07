@@ -94,5 +94,10 @@ namespace MyPopuStore.UI.Pages.Product_Page
                 productPageViewModel.UpdateProduct(productUI.Product);
             }
         }
+
+        public void Refresh()
+        {
+            productPageViewModel.RefreshProductList();
+        }
     }
 }
