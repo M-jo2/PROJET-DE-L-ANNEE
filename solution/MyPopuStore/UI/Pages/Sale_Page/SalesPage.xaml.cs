@@ -32,15 +32,10 @@ namespace MyPopuStore.UI.Pages.Sale_Page
             newSalePage = new();
             registredSalePage = new();
 
-            newSalePage.SaleSaved += this.NewSaleAdded;
+            newSalePage.SaleSaved += registredSalePage.RefreshList;
 
             RegistredSaleFrame.Content = registredSalePage;
             NewSaleFrame.Content = newSalePage;
-        }
-
-        private  void NewSaleAdded(object sender, EventArgs e)
-        {
-            registredSalePage.RefreshList();
         }
     }
 }

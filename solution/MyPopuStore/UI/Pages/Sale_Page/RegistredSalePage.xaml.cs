@@ -48,7 +48,7 @@ namespace MyPopuStore.UI.Pages.Sale_Page
             saleDetailViewModel.SetSaleDetailUIs(saleId);
         }
 
-        public void RefreshList()
+        public void RefreshList(object sender, EventArgs e)
         {
             saleListViewModel.LoadListSale();
         }

@@ -12,4 +12,5 @@ namespace MyPopuStore.BU
         public static void createPopupStore() { }
         public static void closurePopupStore() { }
     }
+
 }

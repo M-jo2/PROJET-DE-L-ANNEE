@@ -55,6 +55,5 @@ namespace MyPopuStore.UI.Pages.Sale_Page
             SaleDetailUI index = ((sender as SaleDetailControl).DataContext as SaleDetailUI);
             newSaleViewModel.DeleteProductToSale(index);
         }
-        
     }
 }
