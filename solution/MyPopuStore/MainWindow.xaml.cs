@@ -2,6 +2,7 @@
 using MyPopuStore.UI.Pages.Manage;
 using MyPopuStore.UI.Pages.Product_Page;
 using MyPopuStore.UI.Pages.Sale_Page;
+using MyPopuStore.UI.Resource;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,15 @@ namespace MyPopuStore
             salesPage = new SalesPage();
 
             ZoneContent.Content = managePage;
+
+            Export export = new Export()
+            {
+                MyPopuStore_Title = "waw",
+                Start = DateTime.MinValue,
+                End = DateTime.MaxValue
+            };
+
+            export.ExportToHtml();
         }
 
         private void MenuBar_ProductButton_Click(object sender, RoutedEventArgs e)

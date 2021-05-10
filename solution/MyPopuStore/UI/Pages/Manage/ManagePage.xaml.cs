@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyPopuStore.UI.Resource;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -49,6 +50,11 @@ namespace MyPopuStore.UI.Pages.Manage
         {
             managePageModel.deleteInfoPopupStore();
             
+        }
+
+        private void CompteRenduButton(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

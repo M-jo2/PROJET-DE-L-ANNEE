@@ -73,6 +73,7 @@
                     Content="Compte rendu"
                     FontSize="8"
                     Grid.Row="2"
+                        Click="CompteRenduButton"
                         Style="{StaticResource buttonPositiveAction}"/>
                 
                 <Button Height="30"

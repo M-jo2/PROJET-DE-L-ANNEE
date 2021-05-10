@@ -29,7 +29,6 @@ namespace MyPopuStore.BU
                 return (int)quantity;
             }
         }
-
         public static decimal getTotalOneSale(int SaleID)
         {
             using (MyPopupStoreDBContext db = new())
@@ -47,7 +46,6 @@ namespace MyPopuStore.BU
                 return saleDetails;
             }
         }
-
         public static bool EnoughProductInStock(List<SaleDetail> saleDetails)
         {
             Dictionary<string,int> codesQuantities = new Dictionary<string, int>();
@@ -66,7 +64,6 @@ namespace MyPopuStore.BU
             }
             return true;
         }
-
         public static void NewSale(List<SaleDetail> saleDetails,bool paymentType,bool decrementQuantityStock=true)
         {
             if(decrementQuantityStock && !EnoughProductInStock(saleDetails))
@@ -96,5 +93,13 @@ namespace MyPopuStore.BU
                 }
             }
         }
+        public static int QuantitySoldOfAProduct(string Code,DateTime start, DateTime end)
+        {
+            using(MyPopupStoreDBContext db= new())
+            {
+                return db.SaleDetails.Where(e=> e.ProductCode==Code).Sum(e => e.NbProduct) ?? default(int);
+            }
+        }
+
     }
 }
