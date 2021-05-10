@@ -37,14 +37,7 @@ namespace MyPopuStore
 
             ZoneContent.Content = managePage;
 
-            Export export = new Export()
-            {
-                MyPopuStore_Title = "waw",
-                Start = DateTime.MinValue,
-                End = DateTime.MaxValue
-            };
-
-            export.ExportToHtml();
+            
         }
 
         private void MenuBar_ProductButton_Click(object sender, RoutedEventArgs e)

@@ -29,14 +29,21 @@ namespace MyPopuStore.UI.Resource
             ProductInfos = new();
         }
 
-        public void ExportToHtml()
+        public void ExportToHtml(string outputPath,string name,bool overwrite)
         {
-            List<ProductInfo> productInfos = CollectProduct();
+            string exportPath = @$"{outputPath}\{name}";
+            File.Copy(@".\UI\Resource\HTML_Template\MyPopupStore_ReportTemplate.html", exportPath, overwrite);
 
-            foreach (ProductInfo product in productInfos)
-            {
-                Console.WriteLine($"{product.Code}  {product.Label}  {product.SaleQuantity}  {product.Stock}");
-            }
+            string textHtml = File.ReadAllText(exportPath);
+
+            textHtml = textHtml.Replace("MyPopupStore_Title", InfoServices.getPopupStoreInfo().PopupStoreName);
+            textHtml = textHtml.Replace("MyPopupStore_Interval", $"{Start.ToString("dd MMMM yyyy")} - {End.ToString("dd MMMM yyyy")}");
+            textHtml = textHtml.Replace("MyPopupStore_LineProduct", WriteLinesOfTable(CollectProduct()));
+            textHtml = textHtml.Replace("MyPopupStore_Total", "1200");
+
+            File.WriteAllText(exportPath, textHtml);
+
+
         }
 
         private List<ProductInfo> CollectProduct()
@@ -54,6 +61,23 @@ namespace MyPopuStore.UI.Resource
                 });
             }
             return productInfos;
+        }
+
+        private string WriteLinesOfTable(List<ProductInfo> productInfos)
+        {
+            string output = "";
+
+            foreach (ProductInfo product in productInfos)
+            {
+                output += @$"<tr>
+					        <td>{product.Code}</td>
+					        <td>{product.Label}</td>
+					        <td>{product.SaleQuantity}</td>
+					        <td>{product.Stock}</td>
+				            </tr>"+"\n";
+            }
+
+            return output;
         }
     }
 }

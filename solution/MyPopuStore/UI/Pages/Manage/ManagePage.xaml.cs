@@ -1,4 +1,5 @@
-﻿using MyPopuStore.UI.Resource;
+﻿using MyPopuStore.BU;
+using MyPopuStore.UI.Resource;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,7 +55,13 @@ namespace MyPopuStore.UI.Pages.Manage
 
         private void CompteRenduButton(object sender, RoutedEventArgs e)
         {
-
+            Export export = new Export()
+            {
+                MyPopuStore_Title = "waw",
+                Start = InfoServices.getPopupStoreInfo().CreationDate,
+                End = DateTime.MaxValue
+            };
+            export.ExportToHtml(@"C:\Users\Moi\Documents\popo", "test.html", true);
         }
     }
 }
