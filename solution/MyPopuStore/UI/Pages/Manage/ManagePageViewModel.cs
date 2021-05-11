@@ -1,5 +1,7 @@
-﻿using MyPopuStore.BU;
+﻿using Microsoft.Win32;
+using MyPopuStore.BU;
 using MyPopuStore.DAL.DB;
+using MyPopuStore.UI.Resource;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -77,10 +79,10 @@ namespace MyPopuStore.UI.Pages.Manage
 
         public ManagePageViewModel()
         {
-            refreshInfo();
+            RefreshInfo();
         }
 
-        private void refreshInfo()
+        private void RefreshInfo()
         {
             if (InfoServices.popupStoreInfoExist())
             {
@@ -96,12 +98,12 @@ namespace MyPopuStore.UI.Pages.Manage
             }
         }
 
-        public void newInfoPopupStore(string popupStoreName)
+        public void NewInfoPopupStore(string popupStoreName)
         {
             try
             {
                 InfoServices.createPopupStoreInfo(popupStoreName);
-                refreshInfo();
+                RefreshInfo();
             }catch(Exception e)
             {
                 MessageBox.Show(e.Message);
@@ -109,10 +111,30 @@ namespace MyPopuStore.UI.Pages.Manage
             
         }
 
-        public void deleteInfoPopupStore()
+        public void DeleteInfoPopupStore()
         {
             InfoServices.deletePopupStoreInfo();
-            refreshInfo();
+            RefreshInfo();
+        }
+
+
+        public void SaveReport()
+        {
+            Export export = new Export()
+            {
+                Start = InfoServices.getPopupStoreInfo().CreationDate,
+                End = DateTime.Now
+            };
+
+            SaveFileDialog saveFileDialog = new();
+            saveFileDialog.Filter = "Text Files(*.html)|*.html|All files (*.*)|*.*";
+            saveFileDialog.FileName = InfoServices.getPopupStoreInfo().PopupStoreName + ".html";
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                
+                export.ExportToHtml(saveFileDialog.FileName, true);
+            }
         }
     }
 }

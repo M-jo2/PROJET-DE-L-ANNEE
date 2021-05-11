@@ -100,6 +100,12 @@ namespace MyPopuStore.BU
                 return db.SaleDetails.Where(e=> e.ProductCode==Code).Sum(e => e.NbProduct) ?? default(int);
             }
         }
-
+        public static decimal GetTotal()
+        {
+            using (MyPopupStoreDBContext db = new())
+            {
+                return db.SaleDetails.Sum(e => e.Price*e.NbProduct)??default(decimal);
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using MyPopuStore.BU;
+﻿using Microsoft.Win32;
+using MyPopuStore.BU;
 using MyPopuStore.UI.Resource;
 using System;
 using System.Collections.Generic;
@@ -42,26 +43,20 @@ namespace MyPopuStore.UI.Pages.Manage
         {
             string popupname = this.PopupStoreNameEntry.Text;
             if (popupname != "")
-                managePageModel.newInfoPopupStore(popupname);
+                managePageModel.NewInfoPopupStore(popupname);
             else
                 this.PopupStoreNameEntry.BorderBrush = Brushes.IndianRed;
         }
 
         private void ClosePopupStoreButton(object sender, RoutedEventArgs e)
         {
-            managePageModel.deleteInfoPopupStore();
+            managePageModel.DeleteInfoPopupStore();
             
         }
 
         private void CompteRenduButton(object sender, RoutedEventArgs e)
         {
-            Export export = new Export()
-            {
-                MyPopuStore_Title = "waw",
-                Start = InfoServices.getPopupStoreInfo().CreationDate,
-                End = DateTime.MaxValue
-            };
-            export.ExportToHtml(@"C:\Users\Moi\Documents\popo", "test.html", true);
+            managePageModel.SaveReport();
         }
     }
 }

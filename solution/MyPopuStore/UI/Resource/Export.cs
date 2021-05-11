@@ -19,7 +19,6 @@ namespace MyPopuStore.UI.Resource
             public int SaleQuantity { get; set; }
             public int Stock { get; set; }
         }
-        public string MyPopuStore_Title { get; set; }
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
         private List<ProductInfo> ProductInfos;
@@ -29,19 +28,18 @@ namespace MyPopuStore.UI.Resource
             ProductInfos = new();
         }
 
-        public void ExportToHtml(string outputPath,string name,bool overwrite)
+        public void ExportToHtml(string outputPath,bool overwrite)
         {
-            string exportPath = @$"{outputPath}\{name}";
-            File.Copy(@".\UI\Resource\HTML_Template\MyPopupStore_ReportTemplate.html", exportPath, overwrite);
+            File.Copy(@".\UI\Resource\HTML_Template\MyPopupStore_ReportTemplate.html", outputPath, overwrite);
 
-            string textHtml = File.ReadAllText(exportPath);
+            string textHtml = File.ReadAllText(outputPath);
 
             textHtml = textHtml.Replace("MyPopupStore_Title", InfoServices.getPopupStoreInfo().PopupStoreName);
             textHtml = textHtml.Replace("MyPopupStore_Interval", $"{Start.ToString("dd MMMM yyyy")} - {End.ToString("dd MMMM yyyy")}");
             textHtml = textHtml.Replace("MyPopupStore_LineProduct", WriteLinesOfTable(CollectProduct()));
-            textHtml = textHtml.Replace("MyPopupStore_Total", "1200");
+            textHtml = textHtml.Replace("MyPopupStore_Total", SaleServices.GetTotal().ToString());
 
-            File.WriteAllText(exportPath, textHtml);
+            File.WriteAllText(outputPath, textHtml);
 
 
         }
@@ -66,7 +64,6 @@ namespace MyPopuStore.UI.Resource
         private string WriteLinesOfTable(List<ProductInfo> productInfos)
         {
             string output = "";
-
             foreach (ProductInfo product in productInfos)
             {
                 output += @$"<tr>
@@ -76,7 +73,6 @@ namespace MyPopuStore.UI.Resource
 					        <td>{product.Stock}</td>
 				            </tr>"+"\n";
             }
-
             return output;
         }
     }
