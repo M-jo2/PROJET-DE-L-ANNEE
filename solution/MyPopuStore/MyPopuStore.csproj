@@ -41,7 +41,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="UI\Pages\Manage\ReportExport\" />
     <Folder Include="UI\Resource\HTML_Template\" />
   </ItemGroup>
 

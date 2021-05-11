@@ -156,3 +156,5 @@ D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\bin\Debug
 D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\bin\Debug\net5.0-windows\SixLabors.Fonts.dll
 D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\bin\Debug\net5.0-windows\SixLabors.ImageSharp.dll
 D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\bin\Debug\net5.0-windows\de\PdfSharpCore.resources.dll
+D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\UI\Pages\Manage\ReportExport\ReportManageView.g.cs
+D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Debug\net5.0-windows\UI\Pages\Manage\ReportExport\ReportManageView.baml

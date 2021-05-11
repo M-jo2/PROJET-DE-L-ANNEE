@@ -1,0 +1,71 @@
+﻿<Window x:Class="MyPopuStore.UI.Pages.Manage.ReportExport.ReportManageView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyPopuStore.UI.Pages.Manage.ReportExport"
+        mc:Ignorable="d"
+        Title="ReportManageView" 
+        Height="160" 
+        Width="200"
+        ResizeMode="NoResize" 
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/UI/Resource/Dictionary1.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </Window.Resources>
+
+    <GroupBox Style="{StaticResource GroupBoxStyle1}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+
+
+            <TextBlock Grid.Row="0" 
+                       Text="Date de début :"/>
+            
+            <DatePicker Grid.Row="1" 
+                        SelectedDate="{Binding DateStart}" 
+                        SelectedDateFormat="Long"/>
+
+            <TextBlock Grid.Row="2" 
+                    Text="Date de fin :"/>
+            <DatePicker Grid.Row="3" 
+                        SelectedDate="{Binding DateEnd}" 
+                        SelectedDateFormat="Long"/>
+
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Button Style="{StaticResource buttonExitStyle}"
+                        Grid.Column="0"
+                        x:Name="Cancel"
+                        Content="ANNULER"
+                        Click="Cancel_Click"/>
+                
+                <Button Style="{StaticResource buttonPositiveAction}"
+                        Grid.Column="1"
+                        x:Name="Accept"
+                        Content="VALIDER"
+                        Click="Accept_Click"/>
+            </Grid>
+        </Grid>
+    </GroupBox>
+
+</Window>

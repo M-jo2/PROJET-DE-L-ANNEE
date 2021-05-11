@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using MyPopuStore.BU;
 using MyPopuStore.DAL.DB;
+using MyPopuStore.UI.Pages.Manage.ReportExport;
 using MyPopuStore.UI.Resource;
 using System;
 using System.Collections.Generic;
@@ -120,20 +121,21 @@ namespace MyPopuStore.UI.Pages.Manage
 
         public void SaveReport()
         {
-            Export export = new Export()
-            {
-                Start = InfoServices.getPopupStoreInfo().CreationDate,
-                End = DateTime.Now
-            };
-
+            Export export = new();
+            ReportManageView reportManageView = new();
             SaveFileDialog saveFileDialog = new();
-            saveFileDialog.Filter = "Text Files(*.html)|*.html|All files (*.*)|*.*";
-            saveFileDialog.FileName = InfoServices.getPopupStoreInfo().PopupStoreName + ".html";
 
-            if (saveFileDialog.ShowDialog() == true)
+            if (reportManageView.ShowDialog() == true)
             {
-                
-                export.ExportToHtml(saveFileDialog.FileName, true);
+                export.End = reportManageView.ReportManageViewModel.DateEnd;
+                export.Start = reportManageView.ReportManageViewModel.DateStart;
+                saveFileDialog.Filter = "Text Files(*.html)|*.html|All files (*.*)|*.*";
+                saveFileDialog.FileName = InfoServices.getPopupStoreInfo().PopupStoreName + ".html";
+
+                if (saveFileDialog.ShowDialog() == true)
+                {
+                    export.ExportToHtml(saveFileDialog.FileName, true);
+                }
             }
         }
     }

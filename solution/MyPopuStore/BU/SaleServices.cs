@@ -97,14 +97,14 @@ namespace MyPopuStore.BU
         {
             using(MyPopupStoreDBContext db= new())
             {
-                return db.SaleDetails.Where(e=> e.ProductCode==Code).Sum(e => e.NbProduct) ?? default(int);
+                return db.SaleDetails.Where(e=> e.ProductCode==Code && e.Sale.Date>start && e.Sale.Date<end).Sum(e => e.NbProduct) ?? default(int);
             }
         }
-        public static decimal GetTotal()
+        public static decimal GetTotal(DateTime start, DateTime end)
         {
             using (MyPopupStoreDBContext db = new())
             {
-                return db.SaleDetails.Sum(e => e.Price*e.NbProduct)??default(decimal);
+                return db.SaleDetails.Where(e => e.Sale.Date > start && e.Sale.Date < end).Sum(e => e.Price*e.NbProduct)??default(decimal);
             }
         }
     }

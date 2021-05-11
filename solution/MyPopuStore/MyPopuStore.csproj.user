@@ -13,6 +13,9 @@
     <Compile Update="UI\Pages\Manage\ManagePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UI\Pages\Manage\ReportExport\ReportManageView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UI\Pages\Product_Page\ProductPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -40,6 +43,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UI\Pages\Manage\ManagePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Pages\Manage\ReportExport\ReportManageView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UI\Pages\Product_Page\ProductPage.xaml">
