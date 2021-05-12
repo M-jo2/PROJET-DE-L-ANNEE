@@ -34,7 +34,7 @@ namespace MyPopuStore.UI.Resource
 
             string textHtml = File.ReadAllText(outputPath);
 
-            textHtml = textHtml.Replace("MyPopupStore_Title", InfoServices.getPopupStoreInfo().PopupStoreName);
+            textHtml = textHtml.Replace("MyPopupStore_Title", InfoServices.GetPopupStoreInfo().PopupStoreName);
             textHtml = textHtml.Replace("MyPopupStore_Interval", $"{Start.ToString("dd MMMM yyyy")} - {End.ToString("dd MMMM yyyy")}");
             textHtml = textHtml.Replace("MyPopupStore_LineProduct", WriteLinesOfTable(CollectProduct()));
             textHtml = textHtml.Replace("MyPopupStore_Total", SaleServices.GetTotal(Start, End).ToString());

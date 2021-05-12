@@ -107,5 +107,22 @@ namespace MyPopuStore.BU
                 return db.SaleDetails.Where(e => e.Sale.Date > start && e.Sale.Date < end).Sum(e => e.Price*e.NbProduct)??default(decimal);
             }
         }
+        public static void DeleteSaleAndSaleDetails()
+        {
+            using (MyPopupStoreDBContext db = new())
+            {
+                List<Sale> sales = getAllSales();
+                foreach(Sale sale in sales)
+                {
+                    List<SaleDetail> saleDetails = getSaleDetailsOneSale(sale.SaleId);
+                    foreach(SaleDetail saleDetail in saleDetails)
+                    {
+                        db.SaleDetails.Remove(saleDetail);
+                    }
+                    db.Sales.Remove(sale);
+                }
+                db.SaveChanges();
+            }
+        }
     }
 }

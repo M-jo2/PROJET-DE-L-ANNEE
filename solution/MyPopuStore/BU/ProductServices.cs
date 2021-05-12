@@ -52,7 +52,6 @@ namespace MyPopuStore.BU
                 return db.Products.Where(e => e.Code == code).Any();
             }
         }
-
         public static void RemoveProduct(string code)
         {
             using (MyPopupStoreDBContext db = new())
@@ -61,6 +60,18 @@ namespace MyPopuStore.BU
                     throw new Exception("Impossible de supprimer un produit enregistré dans au moins une vente.");
 
                 db.Products.Remove(GetProduct(code));
+                db.SaveChanges();
+            }
+        }
+        public static void RemoveAllProduct()
+        {
+            using(MyPopupStoreDBContext db = new())
+            {
+                List<Product> products = GetAllProduct();
+                foreach(Product product in products)
+                {
+                    db.Products.Remove(product);
+                }
                 db.SaveChanges();
             }
         }

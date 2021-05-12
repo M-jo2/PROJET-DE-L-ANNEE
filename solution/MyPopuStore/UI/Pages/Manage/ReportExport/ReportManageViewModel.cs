@@ -45,7 +45,7 @@ namespace MyPopuStore.UI.Pages.Manage.ReportExport
 
         public ReportManageViewModel()
         {
-            dateStart = InfoServices.getPopupStoreInfo().CreationDate;
+            dateStart = InfoServices.GetPopupStoreInfo().CreationDate;
             dateEnd = DateTime.Now;
         }
 

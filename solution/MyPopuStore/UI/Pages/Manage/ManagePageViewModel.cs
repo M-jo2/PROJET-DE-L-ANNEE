@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using MyPopuStore.BU;
 using MyPopuStore.DAL.DB;
+using MyPopuStore.UI.Pages.Manage.ClosePopupStore;
 using MyPopuStore.UI.Pages.Manage.ReportExport;
 using MyPopuStore.UI.Resource;
 using System;
@@ -85,9 +86,9 @@ namespace MyPopuStore.UI.Pages.Manage
 
         private void RefreshInfo()
         {
-            if (InfoServices.popupStoreInfoExist())
+            if (InfoServices.PopupStoreInfoExist())
             {
-                Info info = InfoServices.getPopupStoreInfo();
+                Info info = InfoServices.GetPopupStoreInfo();
                 ExistShopVisibility = "Visible";
                 CreationDate = info.CreationDate.ToString();
                 NamePopupStore = info.PopupStoreName;
@@ -103,7 +104,7 @@ namespace MyPopuStore.UI.Pages.Manage
         {
             try
             {
-                InfoServices.createPopupStoreInfo(popupStoreName);
+                InfoServices.CreatePopupStoreInfo(popupStoreName);
                 RefreshInfo();
             }catch(Exception e)
             {
@@ -112,9 +113,17 @@ namespace MyPopuStore.UI.Pages.Manage
             
         }
 
-        public void DeleteInfoPopupStore()
+        public void CloturePopupStore()
         {
-            InfoServices.deletePopupStoreInfo();
+            ClosePopupValidation closePopupValidation = new();
+
+            if(closePopupValidation.ShowDialog() == true)
+            {
+                InfoServices.DeletePopupStoreInfo();
+                SaleServices.DeleteSaleAndSaleDetails();
+                if (closePopupValidation.DeleteProduct) ProductServices.RemoveAllProduct();
+            }
+            
             RefreshInfo();
         }
 
@@ -130,7 +139,7 @@ namespace MyPopuStore.UI.Pages.Manage
                 export.End = reportManageView.ReportManageViewModel.DateEnd;
                 export.Start = reportManageView.ReportManageViewModel.DateStart;
                 saveFileDialog.Filter = "Text Files(*.html)|*.html|All files (*.*)|*.*";
-                saveFileDialog.FileName = InfoServices.getPopupStoreInfo().PopupStoreName + ".html";
+                saveFileDialog.FileName = InfoServices.GetPopupStoreInfo().PopupStoreName + ".html";
 
                 if (saveFileDialog.ShowDialog() == true)
                 {

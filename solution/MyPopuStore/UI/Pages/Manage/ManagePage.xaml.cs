@@ -50,7 +50,7 @@ namespace MyPopuStore.UI.Pages.Manage
 
         private void ClosePopupStoreButton(object sender, RoutedEventArgs e)
         {
-            managePageModel.DeleteInfoPopupStore();
+            managePageModel.CloturePopupStore();
             
         }
 

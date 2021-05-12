@@ -42,7 +42,7 @@ namespace MyPopuStore
 
         private void MenuBar_ProductButton_Click(object sender, RoutedEventArgs e)
         {
-            if (InfoServices.popupStoreInfoExist())
+            if (InfoServices.PopupStoreInfoExist())
             {
                 productPage.Refresh() ;
                 ZoneContent.Content = productPage;
@@ -53,7 +53,7 @@ namespace MyPopuStore
 
         private void MenuBar_CashRegisterButton_Click(object sender, RoutedEventArgs e)
         {
-            if (InfoServices.popupStoreInfoExist())
+            if (InfoServices.PopupStoreInfoExist())
             {
                 ZoneContent.Content = salesPage;
             }

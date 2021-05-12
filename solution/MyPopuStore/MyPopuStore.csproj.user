@@ -10,6 +10,9 @@
     <Compile Update="UI\Pages\CategoryPriceManagerPage\CategoryPriceManager.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UI\Pages\Manage\ClosePopupStore\ClosePopupValidation.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UI\Pages\Manage\ManagePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -40,6 +43,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UI\Pages\CategoryPriceManagerPage\CategoryPriceManager.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Pages\Manage\ClosePopupStore\ClosePopupValidation.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UI\Pages\Manage\ManagePage.xaml">

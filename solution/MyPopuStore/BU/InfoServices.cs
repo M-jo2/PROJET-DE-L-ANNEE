@@ -10,7 +10,7 @@ namespace MyPopuStore.BU
     class InfoServices
     {
 
-        public static void createPopupStoreInfo(string popupStoreName)
+        public static void CreatePopupStoreInfo(string popupStoreName)
         {
             Info info = new Info() { PopupStoreName =popupStoreName, CreationDate= DateTime.Now.Date };
             using (MyPopupStoreDBContext db = new())
@@ -26,8 +26,7 @@ namespace MyPopuStore.BU
                 db.SaveChanges();
             }
         }
-
-        public static Info getPopupStoreInfo()
+        public static Info GetPopupStoreInfo()
         {
             Info info = null;
 
@@ -38,8 +37,7 @@ namespace MyPopuStore.BU
 
             return info;
         }
-
-        public static bool popupStoreInfoExist()
+        public static bool PopupStoreInfoExist()
         {
             bool exist = false;
 
@@ -50,15 +48,12 @@ namespace MyPopuStore.BU
 
             return exist;
         }
-
-        public static void deletePopupStoreInfo()
+        public static void DeletePopupStoreInfo()
         {
             using (MyPopupStoreDBContext db = new())
             {
-                if (popupStoreInfoExist())
+                if (PopupStoreInfoExist())
                 {
-
-
                     List<Info> infos = db.Infos.ToList();
                     foreach (Info info in infos)
                     {
@@ -68,5 +63,6 @@ namespace MyPopuStore.BU
                 }
             }
         }
+        
     }
 }
