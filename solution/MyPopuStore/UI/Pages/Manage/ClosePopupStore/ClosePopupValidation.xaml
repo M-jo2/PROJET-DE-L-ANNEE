@@ -23,7 +23,7 @@
     </Window.Resources>
 
     <GroupBox Style="{StaticResource GroupBoxStyle1}">
-        <Grid>
+        <Grid >
             <Grid.RowDefinitions>
                 <RowDefinition Height="20"/>
                 <RowDefinition Height="*"/>
@@ -34,7 +34,8 @@
 
 
             <CheckBox Grid.Row="1"
-                      IsChecked="{Binding DeleteProduct}">
+                      IsChecked="{Binding DeleteProduct}"
+                      HorizontalAlignment="Center">
                 <TextBlock Text="Supprimer la liste des produits aussi."
                            TextWrapping="Wrap"/>
             </CheckBox>
@@ -43,7 +44,8 @@
                        Text="Attention : AUCUN retour en arrière n'est possible. Êtes vous certain de vouloir cloturer ce PopupStore ?"
                        TextWrapping="Wrap"
                        Foreground="Red"
-                       FontSize="9"/>
+                       FontSize="9"
+                       HorizontalAlignment="Center"/>
             <Grid Grid.Row="4">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
