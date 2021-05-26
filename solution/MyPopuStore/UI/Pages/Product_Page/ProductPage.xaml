@@ -118,14 +118,14 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
 
-                            <Grid Height="70" Background="LightGreen" Margin="10,10,10,0" >
+                            <Grid Height="70" Background="LightGreen" Margin="0,10,0,0" >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="50"/>
-                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="100"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="100"/>
                                     <ColumnDefinition Width="100"/>
-                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="100"/>
                                 </Grid.ColumnDefinitions>
 
                                 <uc:CategoryPriceControl x:Name="UICatPrice" 
@@ -136,7 +136,7 @@
                                                         ColorPrice="{Binding Color}"
                                                         Price="{Binding Price}"/>
 
-                                <Label Grid.Column="1" VerticalAlignment="Center"  Content="{Binding Product.Code}"/>
+                                <Label Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"  Content="{Binding Product.Code}"/>
 
                                 <Label Grid.Column="2" VerticalAlignment="Center"  Content="{Binding Product.Label}"/>
 
@@ -160,6 +160,8 @@
 
                                 <Button Grid.Column="5" 
                                         VerticalAlignment="Center"  
+                                        HorizontalAlignment="Center"
+                                        Width="37"
                                         Style="{StaticResource ButtonDelete}"
                                         Click="DeleteProduct_Click"/>
                             </Grid>

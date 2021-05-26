@@ -1,0 +1,20 @@
+﻿MyPopuStore
+
+
+winexe
+C#
+.cs
+D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\obj\Release\net5.0-windows\
+MyPopuStore
+none
+false
+TRACE;RELEASE;NET;NET5_0;NETCOREAPP
+D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\App.xaml
+131823455958
+
+36-1111742050
+223-18150553
+MainWindow.xaml;UI\Pages\CategoryPriceManagerPage\CategoryPriceManager.xaml;UI\Pages\Manage\ClosePopupStore\ClosePopupValidation.xaml;UI\Pages\Manage\ManagePage.xaml;UI\Pages\Manage\ReportExport\ReportManageView.xaml;UI\Pages\Product_Page\ProductPage.xaml;UI\Pages\Sale_Page\NewSalePage.xaml;UI\Pages\Sale_Page\RegistredSalePage.xaml;UI\Pages\Sale_Page\SalesPage.xaml;UI\Resource\Dictionary1.xaml;UI\Resource\DictionarySales.xaml;UI\Resource\User_Control\CategoryPriceControl.xaml;UI\Resource\User_Control\SaleDetailControl.xaml;
+
+False
+

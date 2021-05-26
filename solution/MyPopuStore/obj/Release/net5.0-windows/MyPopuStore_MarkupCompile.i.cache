@@ -10,11 +10,11 @@ none
 false
 TRACE;RELEASE;NET;NET5_0;NETCOREAPP
 D:\Projet dev\projet Cours PGBD\PROJET DE L ANNEE\solution\MyPopuStore\App.xaml
-61112621625
+131823455958
 
-24565718603
-220-1937298373
-MainWindow.xaml;UI\Pages\CategoryPrice\CategoryPriceManager.xaml;UI\Pages\Manage\ManagePage.xaml;UI\Pages\Product\ProductPage.xaml;UI\Pages\Sale\SalePage.xaml;UI\Resource\Dictionary1.xaml;
+381854285844
+223-18150553
+MainWindow.xaml;UI\Pages\CategoryPriceManagerPage\CategoryPriceManager.xaml;UI\Pages\Manage\ClosePopupStore\ClosePopupValidation.xaml;UI\Pages\Manage\ManagePage.xaml;UI\Pages\Manage\ReportExport\ReportManageView.xaml;UI\Pages\Product_Page\ProductPage.xaml;UI\Pages\Sale_Page\NewSalePage.xaml;UI\Pages\Sale_Page\RegistredSalePage.xaml;UI\Pages\Sale_Page\SalesPage.xaml;UI\Resource\Dictionary1.xaml;UI\Resource\DictionarySales.xaml;UI\Resource\User_Control\CategoryPriceControl.xaml;UI\Resource\User_Control\SaleDetailControl.xaml;
 
-False
+True
 

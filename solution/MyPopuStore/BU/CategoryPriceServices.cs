@@ -10,6 +10,9 @@ namespace MyPopuStore.BU
     using DB = DAL.DB;
     class CategoryPriceServices
     {
+        /// <summary>
+        /// Crée et ajoute une catégorie de prix dans la DB
+        /// </summary>
         public static void Add(string color,decimal price) {
             using (DB.MyPopupStoreDBContext db = new())
             {
@@ -17,6 +20,11 @@ namespace MyPopuStore.BU
                 db.SaveChanges();
             }
         }
+
+        /// <summary>
+        /// Supprime une catégorie de prix dans la DB
+        /// </summary>
+        /// <param name="categoryPrice">prix à supprimer</param>
         public static void Delete(CategoryPrice categoryPrice) {
             if (CategoryPriceServices.CategoryPriceIsUsed(categoryPrice.CategoryPriceId))
             {
@@ -31,6 +39,10 @@ namespace MyPopuStore.BU
             }
         }
 
+        /// <summary>
+        /// Recherche d'un prix dans la DB
+        /// </summary>
+        /// <param name="ID">Identifiant du prix</param>
         public static CategoryPrice GetPrice(int ID)
         {
             using (MyPopupStoreDBContext db = new())
@@ -41,6 +53,9 @@ namespace MyPopuStore.BU
             }
         }
 
+        /// <returns>
+        /// Retourne tout les prix enregistré
+        /// </returns>
         public static List<CategoryPrice> GetAllPrice()
         {
             using (DB.MyPopupStoreDBContext db = new())
@@ -49,6 +64,9 @@ namespace MyPopuStore.BU
             }
         }
 
+        /// <summary>
+        /// Crée et ajoute une catégorie de prix dans la DB
+        /// </summary>
         public static bool CategoryPriceIsUsed(int catId)
         {
             using (DB.MyPopupStoreDBContext db = new())

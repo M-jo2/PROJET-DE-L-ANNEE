@@ -63,17 +63,17 @@
                                                        VerticalAlignment="Center"
                                                        HorizontalAlignment="Left"
                                                        Padding="0"
-                                                       Text="{Binding Sale.Date}"/>
+                                                       Text="{Binding Sale.Date,StringFormat='{}{0:dd MMMM yyyy    hh:mm}'}"/>
                                         <TextBlock Grid.Column="1"
                                                        VerticalAlignment="Center" 
                                                        HorizontalAlignment="Center"
                                                        Padding="0" 
-                                                       Text="{Binding Total}"/>
+                                                       Text="{Binding Total,StringFormat='{}{0}€'}"/>
                                         <TextBlock Grid.Column="2"
                                                        VerticalAlignment="Center" 
                                                        HorizontalAlignment="Center" 
                                                        Padding="0" 
-                                                       Text="{Binding QuantityOfProduct }"/>
+                                                       Text="{Binding QuantityOfProduct,StringFormat='{}{0} articles' }"/>
                                         <Image Grid.Column="3" 
                                                    HorizontalAlignment="Right" 
                                                    Source="{Binding Sale.PaymentType,Converter={StaticResource PaymentTypeToLogoConverter}}"/>

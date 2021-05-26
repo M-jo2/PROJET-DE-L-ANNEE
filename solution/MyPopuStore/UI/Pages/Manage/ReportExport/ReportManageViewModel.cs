@@ -14,6 +14,9 @@ namespace MyPopuStore.UI.Pages.Manage.ReportExport
         private DateTime dateStart;
         private DateTime dateEnd;
 
+        /// <summary>
+        /// Date de début à considéré dans le cadre du bilan
+        /// </summary>
         public DateTime DateStart
         {
             get
@@ -28,6 +31,10 @@ namespace MyPopuStore.UI.Pages.Manage.ReportExport
                 OnPropertyChanged();
             }
         }
+
+        /// <summary>
+        /// Date de fin dans le cadre du bilan
+        /// </summary>
         public DateTime DateEnd
         {
             get

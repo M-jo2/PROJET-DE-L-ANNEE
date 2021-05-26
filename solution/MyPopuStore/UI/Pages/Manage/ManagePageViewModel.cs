@@ -100,6 +100,7 @@ namespace MyPopuStore.UI.Pages.Manage
             }
         }
 
+
         public void NewInfoPopupStore(string popupStoreName)
         {
             try
@@ -113,6 +114,9 @@ namespace MyPopuStore.UI.Pages.Manage
             
         }
 
+        /// <summary>
+        /// déclanche la procédure de cloture du popupstore
+        /// </summary>
         public void CloturePopupStore()
         {
             ClosePopupValidation closePopupValidation = new();
@@ -128,6 +132,9 @@ namespace MyPopuStore.UI.Pages.Manage
         }
 
 
+        /// <summary>
+        /// déclenche la procédure d'exportation du compte rendu
+        /// </summary>
         public void SaveReport()
         {
             Export export = new();

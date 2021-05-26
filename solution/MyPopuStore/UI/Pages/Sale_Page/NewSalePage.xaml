@@ -65,30 +65,40 @@
                                         Style="{StaticResource CodeEntry}" 
                                          Text="{Binding NewSaleDetailCode,UpdateSourceTrigger=PropertyChanged}" 
                                          Width="50"/>
+                            
                             <Popup Name="myPopup" 
-                                       Placement="MousePoint" 
-                                       IsOpen="{Binding ElementName=EntryCode, Path=IsFocused,Mode=OneWay}">
-
-                                <ListView Name="myPopupText"
+                                   PlacementTarget="{Binding ElementName=EntryCode}"
+                                   Placement="Bottom" 
+                                   IsOpen="{Binding ElementName=EntryCode, Path=IsFocused,Mode=OneWay}"
+                                   Height="200">
+                                <GroupBox Style="{StaticResource GroupBoxStyle1}"
+                                          Background="White"
+                                          Padding="2">
+                                    <ScrollViewer>
+                                        <ListView Name="myPopupText"
                                               ItemsSource="{Binding ComboBoxPropositionProducts}"
                                               SelectedValue="{Binding ElementName=EntryCode,Path=Text}"
                                               SelectedValuePath="Code">
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate>
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="30"/>
-                                                    <ColumnDefinition Width="30"/>
-                                                    <ColumnDefinition Width="auto"/>
-                                                </Grid.ColumnDefinitions>
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="30"/>
+                                                            <ColumnDefinition Width="30"/>
+                                                            <ColumnDefinition Width="auto"/>
+                                                        </Grid.ColumnDefinitions>
 
-                                                <Image Source="{Binding Picture}" Grid.Column="0"/>
-                                                <TextBlock Text="{Binding Code}" Grid.Column="1" Foreground="DarkGray"/>
-                                                <TextBlock Text="{Binding Label}" Grid.Column="2"/>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
+                                                        <Image Source="{Binding Picture}" Grid.Column="0"/>
+                                                        <TextBlock Text="{Binding Code}" Grid.Column="1" Foreground="DarkGray"/>
+                                                        <TextBlock Text="{Binding Label}" Grid.Column="2"/>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </ScrollViewer>
+                                </GroupBox>
+                                    
+                                
                             </Popup>
 
                         </StackPanel >

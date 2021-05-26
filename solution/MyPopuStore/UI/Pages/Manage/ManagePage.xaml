@@ -65,7 +65,7 @@
                 <TextBlock VerticalAlignment="Center"
                     Grid.Row="1">
                     <Run Text="Date de création : "/>
-                    <Run Text="{Binding CreationDate , UpdateSourceTrigger=PropertyChanged}" />
+                    <Run Text="{Binding CreationDate,StringFormat='{}{0:dd MMMM yyyy}'}" />
                 </TextBlock>
                 
                 <Button Height="30"

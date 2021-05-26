@@ -36,6 +36,7 @@ namespace MyPopuStore.UI.Pages.CategoryPriceManagerPage
             this.DataContext = categoryPriceManagerViewModel;
         }
 
+
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;

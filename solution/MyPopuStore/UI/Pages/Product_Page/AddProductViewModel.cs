@@ -108,7 +108,6 @@ namespace MyPopuStore.UI.Pages.Product_Page
             {
                 MessageBox.Show(e.Message);
             }
-            
         }
 
         public void SetCategoriesPrices()

@@ -39,6 +39,9 @@ namespace MyPopuStore.UI.Pages.CategoryPriceManagerPage
             LoadCategories();
         }
 
+        /// <summary>
+        /// Recharge les Categories de prix depuis la DB
+        /// </summary>
         public void LoadCategories()
         {
             List<CategoryPrice> categoryPrices = CategoryPriceServices.GetAllPrice();

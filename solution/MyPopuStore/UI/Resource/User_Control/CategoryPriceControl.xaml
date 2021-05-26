@@ -18,7 +18,7 @@
             Click="MainButton_Click"
             >
             <Viewbox>
-                <TextBlock Text="{Binding Price,Mode=TwoWay,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}}}"/>
+                <TextBlock Text="{Binding Price,Mode=TwoWay,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},StringFormat='{}{0}€'}"/>
             </Viewbox>
             <Button.Resources>
                 <Style TargetType="Border">

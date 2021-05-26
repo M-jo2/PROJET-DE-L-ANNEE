@@ -9,7 +9,10 @@ namespace MyPopuStore.BU
 {
     class InfoServices
     {
-
+        /// <summary>
+        /// Initialise le nouveau magasin dans la DB
+        /// </summary>
+        /// <param name="popupStoreName"> Nom du magasin </param>
         public static void CreatePopupStoreInfo(string popupStoreName)
         {
             Info info = new Info() { PopupStoreName =popupStoreName, CreationDate= DateTime.Now.Date };
@@ -26,6 +29,11 @@ namespace MyPopuStore.BU
                 db.SaveChanges();
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>Null ou <c>Info</c>. Contiens les information relative au magasin</c></returns>
         public static Info GetPopupStoreInfo()
         {
             Info info = null;
@@ -37,6 +45,11 @@ namespace MyPopuStore.BU
 
             return info;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns> True si un magasin a déjà été initialisé</returns>
         public static bool PopupStoreInfoExist()
         {
             bool exist = false;
@@ -48,6 +61,10 @@ namespace MyPopuStore.BU
 
             return exist;
         }
+
+        /// <summary>
+        /// Supprime uniquement les information relative au magasin.
+        /// </summary>
         public static void DeletePopupStoreInfo()
         {
             using (MyPopupStoreDBContext db = new())
