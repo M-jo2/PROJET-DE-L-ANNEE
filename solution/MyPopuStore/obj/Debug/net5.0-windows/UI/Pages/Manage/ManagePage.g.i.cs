@@ -77,7 +77,7 @@ namespace MyPopuStore.UI.Pages.Manage {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MyPopuStore;V1.0.0.0;component/ui/pages/manage/managepage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MyPopuStore;component/ui/pages/manage/managepage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\UI\Pages\Manage\ManagePage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

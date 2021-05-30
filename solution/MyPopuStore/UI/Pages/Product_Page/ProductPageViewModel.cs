@@ -2,6 +2,7 @@
 using MyPopuStore.BU;
 using MyPopuStore.DAL.DB;
 using MyPopuStore.UI.Pages.CategoryPriceManagerPage;
+using MyPopuStore.UI.Pages.Product_Page.Image_Manager;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -69,10 +70,11 @@ namespace MyPopuStore.UI.Pages.Product_Page
         }
         public void SetPictureProduct(Product product)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "All files (*.*)|*.*";
-            if (openFileDialog.ShowDialog() == true)
-                product.Picture = openFileDialog.FileName;
+            ImageManagerView imageManagerView = new();
+            if(imageManagerView.ShowDialog() == true)
+            {
+                product.Picture = imageManagerView.PathFile;
+            }
             UpdateProduct(product);
         }
 

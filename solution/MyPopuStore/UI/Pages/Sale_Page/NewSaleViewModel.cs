@@ -18,9 +18,24 @@ namespace MyPopuStore.UI.Pages.Sale_Page
         public ObservableCollection<SaleDetailUI> SaleDetailUIs { get; set; }
         public ObservableCollection<Product> ComboBoxPropositionProducts { get; set; }
 
+        private decimal totalSale = 0;
         private string newSaleDetailCode;
         private int newSaleDetailQuantity;
         private decimal newSaleDetailPrice;
+
+        public decimal TotalSale
+        {
+            get
+            {
+                return totalSale;
+            }
+            set
+            {
+                totalSale = value;
+                OnPropertyChanged();
+            }
+        }
+
         public String NewSaleDetailCode
         {
             get
@@ -93,6 +108,7 @@ namespace MyPopuStore.UI.Pages.Sale_Page
             newSaleDetailCode = "";
             newSaleDetailQuantity = 0;
             newSaleDetailPrice = 0;
+            TotalSale = 0;
         }
 
 
@@ -125,6 +141,7 @@ namespace MyPopuStore.UI.Pages.Sale_Page
             };
             if (NewProductIsValid(saleDetail))
             {
+                TotalSale += (saleDetail.NbProduct * saleDetail.Price)?? default;
                 SaleDetailUIs.Add(new SaleDetailUI()
                 {
                     Product = product,
@@ -152,6 +169,7 @@ namespace MyPopuStore.UI.Pages.Sale_Page
         public void DeleteProductToSale(SaleDetailUI index)
         {
             SaleDetailUIs.Remove(index);
+            TotalSale -= (index.SaleDetail.NbProduct * index.SaleDetail.Price) ?? default;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
